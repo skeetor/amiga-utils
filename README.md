@@ -1,12 +1,14 @@
 # CMake examples with for Amiga 
 
-These are examples for creating Amiga Projects using amigaos compiler from here: https://github.com/bebbo/amiga-gcc
+These are examples for creating Amiga Projects using AmigaOS compiler from bebbo: https://github.com/bebbo/amiga-gcc
 
 In order to use this you have to put the tools directory into your path and execute
 
 `. amiga-env`
 
 The examples should run on any kickstartfrom 1.x up.
+
+For using this package, you need either a Linux installation or under Windows using MSYS2 MSYS (not MingW).
 
 ### Installation
 
@@ -22,6 +24,20 @@ cd build-release
 make && make install
 ```
 
+### Libraries
+
+There will two libraries installed with utillity functions, usefull for common Amiga projects. Refer to the respective subdirectores/include files for more details.
+
+##### libAmigaUtils.a
+
+This is a library with no external dependencies, so it can be linked to any project. Exported functions are also usable from a GCC project.
+
+##### libAmigaGCCUtils.a
+
+This library provides tools which require a C runtime environment and thus can not be simply linked against a pure ASM project.
+<br>
+<br>
+<br>
 Now you can build the example projects below.
 
 ### VASMOnly
@@ -37,7 +53,6 @@ The assembler part is built as a seperate static library in CMake and linked to 
 
 This project shows an example where you create a library with ASM modules and link them to your main executable.
 
-
 The above examples should cover all common project szenarios.
 
 Have fun with assembler :-).
@@ -46,7 +61,7 @@ Have fun with assembler :-).
 ### Example
 
 ```
-cd Amiga-programming-examples/CMake/VasmGCC
+cd amiga-utils/CMake/VasmGCC
 cmake . -B build-release
 cd build-release
 make
