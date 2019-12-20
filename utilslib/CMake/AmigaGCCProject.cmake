@@ -30,9 +30,9 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
 endif("${CMAKE_BUILD_TYPE}" STREQUAL "") 
 
 # Set compiler flags which should be kept for both C and C++.
-SET(COMMON_COMPILER_FLAGS "--save-temps -Wall -pedantic -mcrt=nix13")
+SET(COMMON_COMPILER_FLAGS "--save-temps -Wall -pedantic -mcrt=nix13 -fno-exceptions -fno-rtti")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${COMMON_COMPILER_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMMON_COMPILER_FLAGS}")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -g -mregparm")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -mregparm")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1 -g -mregparm")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -mregparm")
