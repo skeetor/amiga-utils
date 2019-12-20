@@ -3,6 +3,8 @@
 	xdef _WaitRaster
 	xdef WaitRaster
 
+	section .text,code
+
 _WaitRaster:
 WaitRaster:
 	move.l	d0,-(a7)

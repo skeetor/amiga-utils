@@ -1,7 +1,7 @@
 
 #include <cstdio>
 
-#include <inline/exec.h>
+#include <proto/exec.h>
 #include <utils/system/system.h>
 #include <utils/hardware/custom_registers.h>
 #include <utils/time/time.h>

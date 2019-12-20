@@ -3,6 +3,8 @@
 ; normal debugging doesn't work
 ;
 
+	section .text,code
+
 _PowerLEDOff::
 PowerLEDOff::
 	bset #1,$BFE001 
