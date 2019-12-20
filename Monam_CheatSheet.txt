@@ -1,0 +1,53 @@
+Monam Shortcuts and Tips
+========================
+
+<LA> - Left Amiga Key
+<RA> - Right Amiga Key
+
+<C> - Any Control
+<LC> - Left Control
+<RC> - Right Control
+
+a/b - Press either a or b, both keys work
+a-b - Press a AND b, you have to press both keys to trigger the command
+
+
+Entering addresses
+==================
+	Default is hex, so you don't need to enter a leading '$'.
+	You can enter also a symbol, or a register like (pc, d0, etc.).
+	If you really want to get to address $d0 you have to specify it with
+	the hex value ($d0) otherwise the current address is taken from 
+	register D0 is used.
+	Example:
+	<RA>-a
+	d0 -> set address to value of register D0
+
+	<RA>-a
+	$d0 -> set address to $d0
+
+=============================================================================
+<TAB> - Cycle between the windows one after another
+
+<RA>-b - Set breakpoint
+	Set a breakpoint to the specified address
+
+<RA>-a/m - Set address
+	When the Dissassembly or Memory window is active, you are asked to enter
+	an address and the top line is changed to that address. For other windows
+	this doesn't have an effect.
+	Example:
+	<RA>-a
+	d0 -> set address to value of register D0
+	
+	<RA>-a
+	$d0 -> set address to $d0
+
+<C>-z/<C>-y Single step current instruction
+<C>-t Execute current instruction
+	The difference to <C>-z is, that this shortcut steps over instructions
+	like jsr/bsr while <C>-z will enter the subroutine.
+
+<C>-r Run
+	Starts the execution of the current application until it stops
+	or a breakpoint is hit

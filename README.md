@@ -19,7 +19,7 @@ git clone https://github.com/skeetor/amiga-utils
 export PATH=<MYPATH>/amiga-utils/CMake/tools:$PATH
 . amiga-env
 cd amiga-utils/utilslib
-cmake . -B build-release
+cmake . -Bbuild-release
 cd build-release
 make && make install
 ```
@@ -62,7 +62,7 @@ Have fun with assembler :-).
 
 ```
 cd amiga-utils/CMake/VasmGCC
-cmake . -B build-release
+cmake . -Bbuild-release
 cd build-release
 make
 ```

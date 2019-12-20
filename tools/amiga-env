@@ -8,3 +8,4 @@ export AR=amiga-ar
 
 export PATH=${AMIGA_TOOLCHAIN}/bin:${AMIGA_TOOLCHAIN}/utils:$PATH
 hash -r
+
