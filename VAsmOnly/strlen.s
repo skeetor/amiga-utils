@@ -11,7 +11,6 @@
 	include GCCLib.i
 
 strlen:
-	moveq.l #0,d0
     move.l  a0,d0
 
 .loop:
@@ -19,7 +18,6 @@ strlen:
 	bne     .loop
 
     sub.l   a0,d0
-    neg.l   d0
-    subq.l  #1,d0
+    not.l   d0
 
     rts
