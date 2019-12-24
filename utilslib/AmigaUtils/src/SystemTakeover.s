@@ -1,11 +1,12 @@
 ; Based on: http://stingray.untergrund.net/MiniStartup.s
 
+	include exec/execbase.i
+
 	include lvo/exec_lib.i
 	include lvo/graphics_lib.i
 
 	include utils/utils_def.i
 	include utils/hardware/custom_registers.i
-	include utils/system/libraries.i
 
 INTENASET	= %1100000000100000
 DMASET		= %1000001111100000
@@ -17,16 +18,25 @@ SystemSave::
 
 	movem.l	d0-a6,-(a7)
 
+	move.w	#0, NTSC_SYSTEM
+	move.l	4.w,a6
+	cmp.b	#50, PowerSupplyFrequency(a6)
+	beq		.pal
+	move.w	#1, NTSC_SYSTEM
+
+.pal:
 	moveq	#0,d0				; Version
 	jsr		OpenGraphicsLibrary
-	beq.b	.END
+	beq		.END
 
 	move.l	d0,a6
 	move.l	34(a6),OldView
+
 	sub.l	a1,a1
-	bsr.w	DoView
-	move.l	DSKDAT_OFS(a6),OldCop1	; Store old CL 1
-	move.l	SERPER_OFS(a6),OldCop2	; Store old CL 2
+	bsr		DoView
+
+	move.l	DSKDAT_OFS(a6),OldCop1			; Store old CL 1
+	move.l	SERPER_OFS(a6),OldCop2			; Store old CL 2
 	
 	bsr	GetVBR
 
@@ -35,24 +45,25 @@ SystemSave::
 
 	;***	Store Custom Regs	***
 
-	lea	HWREGBASE,a6					; base address
-	move.w	ADKCONR_OFS(a6),ADK			; Store old ADKCON
-	move.w	INTENAR_OFS(a6),OldINTENA	; Store old INTENA
+	lea	HWREGBASE,a6						; base address
+	move.w	ADKCONR_OFS(a6),ADK				; Store old ADKCON
+	move.w	INTENAR_OFS(a6),OldINTENA		; Store old INTENA
 	move.w	DMACONR_OFS(a6),DMAVal			; Store old DMA
 	move.w	#$7FFF,d0
 
 	jsr	WaitRaster
 
-	move.w	d0,INTENA_OFS(a6)			; Disable Interrupts
-	move.w	d0,DMACON_OFS(a6)			; Clear all DMA channels
-	move.w	d0,INTREQ_OFS(a6)			; Clear all INT requests
+	move.w	d0,INTENA_OFS(a6)				; Disable Interrupts
+	move.w	d0,DMACON_OFS(a6)				; Clear all DMA channels
+	move.w	d0,INTREQ_OFS(a6)				; Clear all INT requests
 
 	move.l	$6c(a0),OldVBI
 	lea	NewVBI,a1
 	move.l	a1,$6c(a0)
 
 	move.w	#INTENASET!$C000,INTENA_OFS(a6)	; set Interrupts+ BIT 14/15
-	move.w	#DMASET!$8200,DMACON_OFS(a6); set DMA	+ BIT 09/15
+	move.w	#DMASET!$8200,DMACON_OFS(a6)	; set DMA	+ BIT 09/15
+	move.w  #%0000111100000000,POTGO_OFS(A5); Set standard OS value
 
 .END:
 
@@ -63,39 +74,38 @@ SystemSave::
 _SystemRestore::
 SystemRestore::
 
-	movem.l	d0-a6,-(a7)
+	movem.l	d2-d7/a2-a6,-(a7)
 
 	lea	HWREGBASE,a6
 	clr.l	VBIptr
 
 	move.w	#$8000,d0
-	or.w	d0,OldINTENA			; SET/CLR-Bit to 1
-	or.w	d0,DMAVal				; SET/CLR-Bit to 1
-	or.w	d0,ADK					; SET/CLR-Bit to 1
+	or.w	d0,OldINTENA				; SET/CLR-Bit to 1
+	or.w	d0,DMAVal					; SET/CLR-Bit to 1
+	or.w	d0,ADK						; SET/CLR-Bit to 1
 	subq.w	#1,d0
 	jsr	WaitRaster
 
 	move.w	d0,INTENA_OFS(a6)			; Clear all INT bits
-	move.w	d0,DMACON_OFS(a6)		; Clear all DMA channels
-	move.w	d0,INTREQ_OFS(a6)		; Clear all INT requests
+	move.w	d0,DMACON_OFS(a6)			; Clear all DMA channels
+	move.w	d0,INTREQ_OFS(a6)			; Clear all INT requests
 
 	move.l	VBRptr,a0
 	move.l	OldVBI,$6c(a0)
 
-	move.l	OldCop1,COP1LCH_OFS(a6)	; Restore old CL 1
-	move.l	OldCop2,COP2LCH_OFS(a6)	; Restore old CL 2
-	move.w	d0,COPJMP1_OFS(a6)		; start copper1
-	move.w	OldINTENA,INTENA_OFS(a6); Restore INTENA
-	move.w	DMAVal,DMACON_OFS(a6)	; Restore DMAcon
-	move.w	ADK,ADKCON_OFS(a6)		; Restore ADKcon
+	move.l	OldCop1,COP1LCH_OFS(a6)		; Restore old CL 1
+	move.l	OldCop2,COP2LCH_OFS(a6)		; Restore old CL 2
+	move.w	d0,COPJMP1_OFS(a6)			; start copper1
+	move.w	OldINTENA,INTENA_OFS(a6)	; Restore INTENA
+	move.w	DMAVal,DMACON_OFS(a6)		; Restore DMAcon
+	move.w	ADK,ADKCON_OFS(a6)			; Restore ADKcon
 
 	move.l	GraphicsBase,a6
-	move.l	OldView,a1				; restore old viewport
+	move.l	OldView,a1					; restore old viewport
 	bsr.b	DoView
 
-
 	jsr		CloseGraphicsLibrary
-	movem.l	(a7)+,d0-a6
+	movem.l	(a7)+,d2-d7/a2-a6
 
 	rts
 
@@ -139,12 +149,12 @@ GetVBR:
 _ClearVBI::
 ClearVBI::
 	moveq	#0,d0
+	move.l	d0,a0
 
 _SetVBI::
 SetVBI::
-	move.l	VBIptr,a0
-	move.l	d0, VBIptr
-	move.l	a0,d0
+	move.l	VBIptr,d0
+	move.l	a0, VBIptr
 	rts
 
 NewVBI:
@@ -172,6 +182,8 @@ NewVBI:
 
 	CNOP 0,2
 OldView:	ds.l 1
+NTSC_SYSTEM::	ds.w 1
+
 OldCop1:	ds.l 1
 OldCop2:	ds.l 1
 VBRptr:		ds.l 1
