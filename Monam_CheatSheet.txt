@@ -43,11 +43,19 @@ Entering addresses
 	<RA>-a
 	$d0 -> set address to $d0
 
+<RA>-s - split/unsplit(merge) active window
+	This will split the active window and create a second window of the same type.
+	i.E when a memory window is active it willc reate another memory window. to 
+	unsplit it, press <RA>-s again.
+
 <C>-z/<C>-y Single step current instruction
 <C>-t Execute current instruction
 	The difference to <C>-z is, that this shortcut steps over instructions
 	like jsr/bsr while <C>-z will enter the subroutine.
 
+<C>-s	Skip instruction
+	Skips the current instruction as if it were a nop.
+	
 <C>-r Run
 	Starts the execution of the current application until it stops
 	or a breakpoint is hit
