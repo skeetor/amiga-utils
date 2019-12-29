@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(Copperlist)
+project(SimpleCopperAnim)
 set(TARGET ${PROJECT_NAME}) 
 
 find_package(AmigaUtils CONFIG REQUIRED)

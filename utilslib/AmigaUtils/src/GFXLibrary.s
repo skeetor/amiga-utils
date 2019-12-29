@@ -4,6 +4,12 @@
 	include utils/system/libraries.i
 
 	section .text,code
+
+GraphicsInit:
+	rts
+
+GraphicsShutdown:
+	rts
 	
 	CreateSystemLibrary Graphics
 
