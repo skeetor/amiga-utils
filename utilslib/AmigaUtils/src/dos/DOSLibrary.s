@@ -5,9 +5,9 @@
 	section .text,code
 	
 DOSInit:
-	move.l	DOSBase, a6
+	move.l	DOSBase,a6
 	CALLLIB	Output
-	move.l	d0, stdout
+	move.l	d0,stdout
 
 	rts
 

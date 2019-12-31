@@ -23,7 +23,7 @@ DebugPowerLED::
 	move #10,d1
 
 .loop:
-	move #50000, d0
+	move #50000,d0
 
 .delay:
 	subq #1,d0

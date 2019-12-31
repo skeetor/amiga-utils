@@ -3,7 +3,7 @@ set(ASM_DIALECT "AMIGA_VASM")
 
 list(APPEND CMAKE_${ASM_DIALECT}_INCLUDE_PATH "${AMIGA_PATH_PREFIX}/ndk13-include" "${AMIGA_PATH_PREFIX}/ndk-include")
 
-set(CMAKE_${ASM_DIALECT}_FLAGS "-esc -kick1hunks -Fhunk -chklabels -quiet -spaces")
+set(CMAKE_${ASM_DIALECT}_FLAGS "-esc -kick1hunks -Fhunk -chklabels -quiet")
 set(CMAKE_${ASM_DIALECT}_FLAGS_DEBUG "${CMAKE_ASM_FLAGS} -D_DEBUG -dwarf=AMIGA")
 set(CMAKE_${ASM_DIALECT}_FLAGS_RELEASE "${CMAKE_ASM_FLAGS} -nosym")
 

@@ -35,17 +35,17 @@ Open\1Library::
     move.l  \1Base,d1
     bne     .IncRef
 
-	lea		\1Name, a1
+	lea		\1Name,a1
 	move.l	ExecBase,a6
 	CALLLIB	OpenLibrary
-    move.l  d0, \1Base
-    move.l  d0, d1
+    move.l  d0,\1Base
+    move.l  d0,d1
     beq     .NoRef
 
 	jsr		\1Init
 
 .IncRef:
-    add.w   #1, \1BaseRef
+    add.w   #1,\1BaseRef
 
 .NoRef:
 	move.l	d1,d0

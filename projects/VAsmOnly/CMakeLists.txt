@@ -9,7 +9,6 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 set(SOURCES
     main.s
-	strlen.s
 )
 
 set_source_files_properties(${SOURCES} PROPERTIES LANGUAGE AMIGA_VASM)
