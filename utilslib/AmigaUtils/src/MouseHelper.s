@@ -11,11 +11,11 @@
 _WaitLeftMouseRelease::
 WaitLeftMouseRelease::
 	
-	btst	#6, CIAAPRA				; Left button
+	btst	#6,CIAAPRA				; Left button
 	bne		.None
 
 .WaitRelease:
-	btst	#6, CIAAPRA	
+	btst	#6,CIAAPRA	
 	beq		.WaitRelease
 
 .Done:
@@ -23,7 +23,7 @@ WaitLeftMouseRelease::
 	rts
 
 .None:
-	moveq #0, d0
+	moveq #0,d0
 	rts
 	
 _WaitRightMouseRelease::
@@ -37,13 +37,17 @@ _WaitRightMouseRelease::
 
 WaitRightMouseRelease::
 
-	btst	#2, POTGOR				; Right button
-	beq		.Done
+	btst	#2,POTGOR				; Right button
+	bne		.Done
 
 .WaitRelease:
-	btst	#2, POTGOR				; Right button
+	btst	#2,POTGOR				; Right button
 	beq		.WaitRelease
 
 .Done:
+	moveq	#1,d0
+	rts
 
+.None:
+	moveq #0,d0
 	rts

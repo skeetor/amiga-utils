@@ -10,7 +10,7 @@
 
 	include GCCLib.i
 
-strlen:
+_ASMStrlen:
     move.l  a0,d0
 
 .loop:

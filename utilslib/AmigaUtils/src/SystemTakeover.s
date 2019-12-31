@@ -18,11 +18,11 @@ SystemSave::
 
 	movem.l	d0-a6,-(a7)
 
-	move.w	#0, NTSC_SYSTEM
+	move.w	#0,NTSC_SYSTEM
 	move.l	4.w,a6
-	cmp.b	#50, PowerSupplyFrequency(a6)
+	cmp.b	#50,PowerSupplyFrequency(a6)
 	beq		.pal
-	move.w	#1, NTSC_SYSTEM
+	move.w	#1,NTSC_SYSTEM
 
 .pal:
 	moveq	#0,d0				; Version
@@ -154,7 +154,7 @@ ClearVBI::
 _SetVBI::
 SetVBI::
 	move.l	VBIptr,d0
-	move.l	a0, VBIptr
+	move.l	a0,VBIptr
 	rts
 
 NewVBI:

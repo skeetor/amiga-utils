@@ -16,16 +16,16 @@
 ; #####################################################
 
 puts::
-	move.l	stdout, d0
+	move.l	stdout,d0
 
 putsf::
 	move.l	d0,d1			; FileHandle
 	move.l	a0,d2			; Buffer
 	jsr		strlen
-	move.l	d0, d3			; Length
+	move.l	d0,d3			; Length
 
 	move.l	a6,-(a7)
-	move.l	DOSBase, a6
+	move.l	DOSBase,a6
 	CALLLIB	Write
 	move.l	(a7)+,a6
 	
