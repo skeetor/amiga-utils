@@ -63,7 +63,8 @@ SystemSave::
 
 	move.w	#INTENASET!$C000,INTENA_OFS(a6)	; set Interrupts+ BIT 14/15
 	move.w	#DMASET!$8200,DMACON_OFS(a6)	; set DMA	+ BIT 09/15
-	move.w  #%0000111100000000,POTGO_OFS(A5); Set standard OS value
+	move.w  #%0000111100000000,POTGO_OFS(a6); Set standard OS value
+	move.w	#0,BPLCON0_OFS(a6)
 
 .END:
 

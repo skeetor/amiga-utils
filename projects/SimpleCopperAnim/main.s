@@ -5,12 +5,8 @@
 	include utils/system/libraries.i
 	include utils/graphics/gfxbase.i
 
-VBI_DELAY_COUNT		EQU		3
 COPPER_START_LINE	EQU		36
-
-COLOR_BAR_TOP		EQU		$00f
-COLOR_BAR_MIDDLE	EQU		$fff
-COLOR_BAR_BOTTOM	EQU		$f00
+COPPER_PAL_END_LINE	EQU		313
 
 	section .text,code
 
@@ -19,48 +15,40 @@ _start:
 	moveq	#0,d0				; Version
 	jsr		OpenDOSLibrary
 
-	jsr		Init
+	jsr		InitDebug
 
-	lea		VerticalBlankIRQ, a0
+	lea		VerticalBlankIRQ,a0
 	jsr		SetVBI
 
-	move.w	#COPPER_START_LINE, ScrollLine
-
-	jsr		PrepareCopperlist
-	beq		.Quit
+	move.w	#COPPER_START_LINE,ScrollLine
 
 	jsr		SystemSave
 
+	jsr		PrepareCopperlist
+	beq		.Done
+
+	jsr		RestartCopperlist
+
 	lea		HWREGBASE,a5
-	
 	move.l	CopperListPtr,d0
-	move.w	#$0080, DMACON_OFS(a5)
-	move.l	d0, COP1LCH_OFS(a5)
+	move.w	#$0080,DMACON_OFS(a5)
+	move.l	d0,COP1LCH_OFS(a5)
 	move.w	d0,COPJMP2_OFS(a5)
-	move.w	#$8280, DMACON_OFS(a5)
+	move.w	#$8280,DMACON_OFS(a5)
 
-	lea		CopperAnimation, a2
-	move.l	a2, VBIProc
+	lea		CopperAnimation,a0
+	move.l	a0,VBIProc
 
-.AnimLoop:
+.MainLoop:
 .WaitMouse:
-	
-	btst	#6, CIAAPRA				; Left button
+	btst	#6,CIAAPRA				; Left button
 	beq		.Stop
 
-	;btst	#2, POTGOR				; Right button
-	;bne		.AnimLoop
-
-	;jsr		CopperAnimation
-
 .WaitRelease:
-	;btst	#2, POTGOR				; Right button
-	;beq		.WaitRelease
-
-	jmp		.AnimLoop
+	jmp		.MainLoop
 
 .Stop:
-	move.w	#$0080, DMACON_OFS(a5)
+	move.w	#$0080,DMACON_OFS(a5)
 	jsr		ClearCopperlist
 
 .Done:
@@ -74,20 +62,9 @@ _start:
 PrepareCopperlist:
 
 	move.l ExecBase,a6
-	moveq #CopperListSize,d0
-	moveq	#2, d1					; CHIP_MEM
+	move.l #CopperListSize,d0
+	moveq	#2,d1					; CHIP_MEM
 	CALLLIB	AllocMem
-	move.l	d0,a1
-	beq		.Done
-
-	move.l	d0,a1
-	lea		CopperList,a0
-	move.w	#CopperListSize>>2,d1
-
-.loop:
-	move.l	(a0)+,(a1)+
-	sub.w	#1,d1
-	bne		.loop
 
 .Done:
 	move.l	d0,CopperListPtr
@@ -95,7 +72,7 @@ PrepareCopperlist:
 
 ClearCopperlist:
 
-	moveq #CopperListSize,d0
+	move.l #CopperListSize,d0
 	move.l	CopperListPtr,a1
 	beq		.Done
 
@@ -107,9 +84,7 @@ ClearCopperlist:
 
 VerticalBlankIRQ:
 
-	add.l	#1, VBICounter
-
-	move.l	VBIProc, d0
+	move.l	VBIProc,d0
 	beq		.Done
 
 	move.l	d0,a0
@@ -118,31 +93,66 @@ VerticalBlankIRQ:
 .Done
 	rts
 
+RestartCopperlist:
+
+	move.l	CopperListPtr,a0
+	move.l	#($0180<<16)+$0000,(a0)+
+	move.l	#((COPPER_START_LINE<<8+$01)<<16)+$ff00,(a0)+
+	move.l	#($0180<<16)+$0fff,(a0)+
+	move.l	#$fffffffe,(a0)+
+
+	rts
+
 CopperAnimation:
 
-	move.l	CopperListPtr, d0
-	beq		.Done
+	move.l	CopperListPtr,a2
+	move.w	ScrollLine,d0
+	add.w	#1,d0
+	cmp.w	#$0100,d0
+	blt.s	.Store
 
-	move.l	d0,a2
-	move.w	ScrollLine, d0
-	move.w	d0,d1	
-	add.w	#$0001, d0
-	cmp.w	d0,d1
-	blt		.Store
-	move.w	#COPPER_START_LINE, d0
+	; If we are on NTSC then we are done.
+	tst.w	NTSC_SYSTEM
+	bne.s	.Restart
 
+	cmp.w	#COPPER_PAL_END_LINE,d0
+	bge.s	.Restart
+
+	; On PAL we need to extend to copperlist
+	; because we have to do an extra wait to
+	; reach the area below NTSC lines.
+
+	; Check if we already extended the copperlist
+	lea		12.w(a2),a0
+	cmp.w	#$ffe1,(a0)
+	beq.s	.PALStore
+
+	sub.l	#4,a0
+	move.l	#$ffe1fffe,(a0)+
+	move.l	#$0000ff00,(a0)+
+	move.l	#($0180<<16)+$0fff,(a0)+
+	move.l	#$fffffffe,(a0)+
+
+.PALStore
+	lea		8.w(a2),a2
+	bra.s	.Store
+
+.Restart:
+	jsr		RestartCopperlist
+
+	move.l	#COPPER_START_LINE,d0
+	
 .Store:
-	move.w	d0, ScrollLine
-	lsl.w	#8, d0
-	bset	#0, d0
-	move.w	d0, 4(a2)
+	move.w	d0,ScrollLine
+	lsl.w	#8,d0
+	bset	#0,d0
+	move.w	d0,4(a2)
 
 .Done:
 	rts
 
-
-Init:
-	lea		WaitMouseButtonTxt, a0
+InitDebug:
+	lea		WaitMouseButtonTxt,a0
 	jsr		puts
 
 .WaitStart:
@@ -150,12 +160,12 @@ Init:
 	jsr		WaitLeftMouseRelease
 	beq		.WaitStart
 
-	lea		NewlineTxt, a0
+	lea		NewlineTxt,a0
 	jsr		puts
 
-	lea		MouseButtonExitTxt, a0
+	lea		MouseButtonExitTxt,a0
 	jsr		puts
-	lea		NewlineTxt, a0
+	lea		NewlineTxt,a0
 	jsr		puts
 
 	rts
@@ -169,24 +179,19 @@ Init:
 	CNOP 0,2
 
 CopperList:
-	dc.w $0180, COLOR_BAR_TOP
-	dc.w COPPER_START_LINE<<8+$01, $ff00
-	
-	dc.w $0180, COLOR_BAR_BOTTOM
-	dc.w $ffff, $fffe		; WAIT END
-
-	dc.w $0180, $0f00		; Red
-	dc.w $d701, $ff00		; WAIT
-
-	dc.w $0180, $0fb0		; Yellow
-	dc.w $ffff, $fffe		; WAIT END
-
-	dc.w $ffff, $fffe		; WAIT END
-	dc.w $ffff, $fffe		; WAIT END
+	dc.w $ffff, $fffe
+	dc.w $ffff, $fffe
+	dc.w $ffff, $fffe
+	dc.w $ffff, $fffe
+	dc.w $ffff, $fffe
+	dc.w $ffff, $fffe
+	dc.w $ffff, $fffe
+	dc.w $ffff, $fffe
+	dc.w $ffff, $fffe
+	dc.w $ffff, $fffe
 CopperEnd:	
 	dc.w $ffff, $fffe		; WAIT END
-	
-CopperListSize = * - CopperList
+CopperListSize = *-CopperList
 
 
 WaitMouseButtonTxt: dc.b	'Press left mousebutton to start...',0
