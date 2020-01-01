@@ -128,8 +128,8 @@ CopperAnimation:
 	beq.s	.PALStore
 
 	sub.l	#4,a0
-	move.l	#$ffe1fffe,(a0)+
-	move.l	#$0000ff00,(a0)+
+	move.l	#$ffe1fffe,(a0)+		; wait for a column outside the visible area
+	move.l	#$0000ff00,(a0)+		; the PAL lines are now addressed with 0-57
 	move.l	#($0180<<16)+$0fff,(a0)+
 	move.l	#$fffffffe,(a0)+
 

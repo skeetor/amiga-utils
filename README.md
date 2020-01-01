@@ -35,10 +35,21 @@ This is a library with no external dependencies, so it can be linked to any proj
 ##### libAmigaGCCUtils.a
 
 This library provides tools which require a C runtime environment and thus can not be simply linked against a pure ASM project.
-<br>
-<br>
-<br>
+
+## Projects
+
 Now you can build the example projects below.
+
+
+### Example
+
+```
+cd amiga-utils/projects/VasmGCC
+cmake . -Bbuild-release
+cd build-release
+make
+```
+Have fun with assembler :-).
 
 ### VASMOnly
 
@@ -55,16 +66,5 @@ This project shows an example where you create a library with ASM modules and li
 
 The above examples should cover all common project szenarios.
 
-Have fun with assembler :-).
-
-
-### Example
-
-```
-cd amiga-utils/CMake/VasmGCC
-cmake . -Bbuild-release
-cd build-release
-make
-```
 
 Help: -D CMAKE_FIND_DEBUG_MODE=ON
