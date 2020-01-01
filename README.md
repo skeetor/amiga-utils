@@ -66,5 +66,12 @@ This project shows an example where you create a library with ASM modules and li
 
 The above examples should cover all common project szenarios.
 
+### SimpleCopper
+
+A project which creates a very simple static copperlist.
+
+### SimpleCopperAnim
+
+A simple copperlist, where the copper is used to move a colorbar with the vertical blank interrupt. This project also shows how to take into account the difference between PAL and NTSC and how the copper has to be used when the extra lines of the PAL screen are to be used.
 
 Help: -D CMAKE_FIND_DEBUG_MODE=ON
