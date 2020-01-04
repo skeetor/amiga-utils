@@ -1,5 +1,5 @@
 	IFND _UTILSLIB_LIBRARIES_I
-_UTILSLIB_LIBRARIES_I SET 1
+_UTILSLIB_LIBRARIES_I EQU 1
 
 	include utils/utils_def.i
 	include lvo/exec_lib.i
