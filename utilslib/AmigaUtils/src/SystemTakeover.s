@@ -51,7 +51,7 @@ SystemSave::
 	move.w	DMACONR_OFS(a6),DMAVal			; Store old DMA
 	move.w	#$7FFF,d0
 
-	jsr	WaitRaster
+	bsr	WaitRaster
 
 	move.w	d0,INTENA_OFS(a6)				; Disable Interrupts
 	move.w	d0,DMACON_OFS(a6)				; Clear all DMA channels

@@ -1,5 +1,5 @@
 	IFND _UTILS_COPPER_I
-_UTILS_COPPER_I SET 1
+_UTILS_COPPER_I EQU 1
 
 ; Values for GfxBase->DisplayFlags
 DFL_NTSC		EQU 1
