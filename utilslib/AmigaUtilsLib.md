@@ -43,8 +43,32 @@ The library contains only code, which has no additional dependencies. It can be 
 
 **Name:**`puts`:<br>
 **Name:**`putsf`:<br>
-**Include:** <br>
+**Include:** "utils/string/string.h"<br>
 **Description:** Prints a 0-terminated string to stdout or the specified file.
+
+**Name:**`formatString`:<br>
+**Include:** "utils/string/string.h"<br>
+**Description:** This formats a string similar to sprintf. There are some differences though.<br>
+
+	* Floating point formats are not supported and willalways printf "INF"<br>
+	* The function will always return the number of character it would need to write to the buffer, even if the buffer is to small. However the function guarantees that there will be no buffer overruns, so the caller can always check if the required characters are more than the supplied buffer, in which case the string will be terminated.<br>
+	* passing nullpointers is safe and will never cause it to write there. In case of a string 
+	"[null]" is inserted.<br>
+	* The function guarantees to always provide a temrinating 0-byte in the outputbuffer, except when the outputbuffer is either a null pointer or the buffersize is 0. In all other cases the resulting string will be null-terminated at the cost of a possible truncated string.<br>
+
+**Name:**`uWordToString`:<br>
+**Name:**`sWordToString`:<br>
+**Name:**`uLongToString`:<br>
+**Name:**`sLongToString`:<br>
+**Include:** "utils/string/numbers.h"<br>
+**Description:** Prints an signed/unsigned word/long value to a stringbuffer. The resulting number will never be 0 terminated and can thus be used to insert strings in the middle of an existing string. Otherwise the same guarantees apply as for `formatString`.
+
+**Name:**`stringToSWord`:<br>
+**Name:**`stringToUWord`:<br>
+**Name:**`stringToSLong`:<br>
+**Name:**`stringToULong`:<br>
+**Include:** "utils/string/numbers.h"<br>
+**Description:** Converts a string to a signed/unsigned word/long value. The conversions stops on the first non-numeric character for the given base, or if an overflow would occur. An appropriate returncode can be retrieved, as well as the pointer to the first not-converted character.
 
 #### math
 

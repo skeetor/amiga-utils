@@ -8,8 +8,7 @@ if (NOT AMIGA_GCCUTILS_LIBRARY_PATH)
 	message(FATAL_ERROR "${AMIGA_GCCUTILS_LIBRARY_PATH} can not be determined!")
 endif()
 
-add_library(${AMIGA_GCCUTILS_TARGET} STATIC IMPORTED)
-set_target_properties(${AMIGA_GCCUTILS_TARGET} PROPERTIES IMPORTED_LOCATION "${AMIGA_GCCUTILS_LIBRARY_PATH}")
+link_directories("${AMIGA_GCCUTILS_PATH_PREFIX}/lib")
 
 include_directories(${AMIGA_GCCUTILS_PATH_PREFIX}/include) 
 

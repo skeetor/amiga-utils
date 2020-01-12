@@ -12,8 +12,7 @@ if (NOT AMIGA_UTILS_LIBRARY_PATH)
 	message(FATAL_ERROR "${AMIGA_UTILS_LIBRARY_PATH} can not be determined!")
 endif()
 
-add_library(${AMIGA_UTILS_TARGET} STATIC IMPORTED)
-set_target_properties(${AMIGA_UTILS_TARGET} PROPERTIES IMPORTED_LOCATION "${AMIGA_UTILS_LIBRARY_PATH}")
+link_directories("${AMIGA_UTILS_PATH_PREFIX}/lib")
 
 include_directories(${AMIGA_UTILS_PATH_PREFIX}/include) 
 include_directories(${AMIGA_OS_PATH_PREFIX}/ndk13-include) 
