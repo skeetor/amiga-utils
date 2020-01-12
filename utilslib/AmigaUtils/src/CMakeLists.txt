@@ -10,6 +10,10 @@ set(ASM_SOURCES ${ASM_SOURCES}
 	${CMAKE_CURRENT_SOURCE_DIR}/dos/WriteString.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/string/strlen.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/to_decu16.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/to_decs16.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/to_decu32.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/to_decs32.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/mem/memcpyl.s
 	${CMAKE_CURRENT_SOURCE_DIR}/mem/memcpyw.s
@@ -19,6 +23,9 @@ set(ASM_SOURCES ${ASM_SOURCES}
 
 	${CMAKE_CURRENT_SOURCE_DIR}/copper/CreateCopperList.s
 	${CMAKE_CURRENT_SOURCE_DIR}/copper/CreateCopperListC.s
+
+	${CMAKE_CURRENT_SOURCE_DIR}/math/div32.s
+	${CMAKE_CURRENT_SOURCE_DIR}/math/mult32.s
 
 	PARENT_SCOPE  
 )

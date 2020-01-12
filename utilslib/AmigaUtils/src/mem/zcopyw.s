@@ -1,7 +1,7 @@
 	section .text,code
 
-; Copy 16 bit values until a 0-terminator is encountered.
-; The number of copied items (including the 0-terminator)
+; Copy 16 bit values until a 0-terminator is encountered (which is also copied).
+; The number of copied items (excluding the 0-terminator)
 ; is returned.
 
 _zcopyw::
@@ -12,6 +12,7 @@ zcopyw::
     move.w  (a0)+,(a1)+
     dbeq    d0,.Loop
 
-	neg.l d0
+	neg.l	d0
+	sub.l	#1,d0
 
     rts

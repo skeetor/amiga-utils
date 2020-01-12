@@ -4,6 +4,7 @@ project(AllProjects)
 
 add_subdirectory(CopperAnimASM)
 add_subdirectory(CopperAnimGCC)
+add_subdirectory(IntegerMathASM)
 add_subdirectory(SimpleCopperAnim)
 add_subdirectory(SimpleCopperlist)
 add_subdirectory(VAsmGCC)
