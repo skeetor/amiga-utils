@@ -12,7 +12,7 @@ For using this package, you need either a Linux installation or under Windows us
 
 ### Installation
 
-The default path for the toolchain is expected to be `/opt/amiga/`. If you have setup your toolchain in a different path, you may take a look into the tools directory and adjust the paths in `amiga-env` accordingly.
+The default prefix path for the toolchain is expected to be `/opt/amiga/`. If you have setup your toolchain in a different path, you may take a look into the tools directory and adjust the paths in `amiga-env` accordingly.
 
 ```
 git clone https://github.com/skeetor/amiga-utils
@@ -23,6 +23,17 @@ cmake . -Bbuild-release
 cd build-release
 make && make install
 ```
+
+To also build all sample projects inm one go, execute the following
+
+```
+cd amiga-utils/projects
+cmake . -Bbuild-release
+cd build-release
+make
+```
+
+Now you will find the sample executables in `amiga-utils/projects/build-release/bin` and can be copied to an Amiga machine.
 
 ### Libraries
 

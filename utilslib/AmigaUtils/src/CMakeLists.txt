@@ -11,5 +11,14 @@ set(ASM_SOURCES ${ASM_SOURCES}
 
 	${CMAKE_CURRENT_SOURCE_DIR}/string/strlen.s
 
+	${CMAKE_CURRENT_SOURCE_DIR}/mem/memcpyl.s
+	${CMAKE_CURRENT_SOURCE_DIR}/mem/memcpyw.s
+	${CMAKE_CURRENT_SOURCE_DIR}/mem/zcopyb.s
+	${CMAKE_CURRENT_SOURCE_DIR}/mem/zcopyw.s
+	${CMAKE_CURRENT_SOURCE_DIR}/mem/zcopyl.s
+
+	${CMAKE_CURRENT_SOURCE_DIR}/copper/CreateCopperList.s
+	${CMAKE_CURRENT_SOURCE_DIR}/copper/CreateCopperListC.s
+
 	PARENT_SCOPE  
 )
