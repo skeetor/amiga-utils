@@ -3,6 +3,8 @@
 
 #include "utils/utils_def.h"
 
+extern uint16_t PAL_SYSTEM;
+
 /**
  * Save the system state, so that the OS can be taken over.
  * This method may not be called multiple times as UB might happen.
@@ -17,13 +19,15 @@ C_FUNCTION void SystemSave(void);
  */
 C_FUNCTION void SystemRestore(void);
 
+typedef void (*VBICallbackProc)(void);
+
 /**
  * Sets the new Vertical Blank Interrupt handler. This should be called
  * before SystemSave has been used. The previous handler is returned
  * and may be called from the client caller.
  * Calling this, while the VBI is currently processed, may result in UB.
  */
-C_FUNCTION void *SetVBI(void *newVBIPtr);
+C_FUNCTION VBICallbackProc SetVBI(VBICallbackProc callback);
 
 /**
  * Clear the current Vertical Blank Interrupt handler. This will not disable
@@ -31,6 +35,6 @@ C_FUNCTION void *SetVBI(void *newVBIPtr);
  * The current handler is returned.
  * Calling this, while the VBI is currently processed, may result in UB.
  */
-C_FUNCTION void *ClearVBI(void);
+C_FUNCTION VBICallbackProc ClearVBI(void);
 
 #endif // _UTILSLIB_SYSTEM_H

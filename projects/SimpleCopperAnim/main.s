@@ -1,6 +1,5 @@
 	include lvo/exec_lib.i
 	
-
 	include utils/hardware/custom_registers.i
 	include utils/system/libraries.i
 	include utils/graphics/gfxbase.i
@@ -112,8 +111,8 @@ CopperAnimation:
 	blt.s	.Store
 
 	; If we are on NTSC then we are done.
-	tst.w	NTSC_SYSTEM
-	bne.s	.Restart
+	tst.w	PAL_SYSTEM
+	beq.s	.Restart
 
 	cmp.w	#COPPER_PAL_END_LINE,d0
 	bge.s	.Restart
@@ -157,7 +156,7 @@ InitDebug:
 
 .WaitStart:
 	
-	jsr		WaitLeftMouseRelease
+	jsr		CheckLeftMouseRelease
 	beq		.WaitStart
 
 	lea		NewlineTxt,a0

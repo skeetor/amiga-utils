@@ -18,11 +18,11 @@ SystemSave::
 
 	movem.l	d0-a6,-(a7)
 
-	move.w	#0,NTSC_SYSTEM
+	move.w	#1,PAL_SYSTEM
 	move.l	4.w,a6
 	cmp.b	#50,PowerSupplyFrequency(a6)
 	beq		.pal
-	move.w	#1,NTSC_SYSTEM
+	move.w	#0,PAL_SYSTEM
 
 .pal:
 	moveq	#0,d0				; Version
@@ -183,7 +183,8 @@ NewVBI:
 
 	CNOP 0,2
 OldView:	ds.l 1
-NTSC_SYSTEM::	ds.w 1
+_PAL_SYSTEM::
+PAL_SYSTEM::	ds.w 1
 
 OldCop1:	ds.l 1
 OldCop2:	ds.l 1

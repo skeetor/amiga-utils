@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(SimpleCopperAnim)
+project(CopperAnimASM)
 set(TARGET ${PROJECT_NAME}) 
 
 find_package(AmigaUtils CONFIG REQUIRED)
@@ -7,6 +7,7 @@ enable_language(AMIGA_VASM)
 
 set(SOURCES
     main.s
+	CopperAnimation.s
 )
 
 set_source_files_properties(${SOURCES} PROPERTIES LANGUAGE AMIGA_VASM)

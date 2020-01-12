@@ -11,8 +11,8 @@ WaitRaster::
 	move.l	VPOSR,d0
 	and.l	#$1ff00,d0
 
-	tst.w	NTSC_SYSTEM
-	beq		.pal
+	tst.w	PAL_SYSTEM
+	bne		.pal
 
 	cmp.l	#256<<8,d0
 	beq		.Done

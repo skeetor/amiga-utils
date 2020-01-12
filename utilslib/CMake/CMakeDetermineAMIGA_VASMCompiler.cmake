@@ -1,13 +1,7 @@
 
 set(ASM_DIALECT "AMIGA_VASM")
 
-set(AMIGA_ASSEMBLER_NAME vasmm68k_mot)
-set(AMIGA_LINKER_NAME vlink)
-
-find_path(AMIGA_M68K_ASSEMBLER_PATH NAMES "${AMIGA_ASSEMBLER_NAME}" "${AMIGA_ASSEMBLER_NAME}.exe" CMAKE_FIND_ROOT_PATH_BOTH)
-
-# Remove the <path>/bin part
-get_filename_component(AMIGA_PATH_PREFIX ${AMIGA_M68K_ASSEMBLER_PATH} DIRECTORY)
+include(GetAmigaPathPrefix)
 
 set(CMAKE_${ASM_DIALECT}_PREFIX "${AMIGA_PATH_PREFIX}/utils" CACHE INTERNAL "Installation path next to compiler")
 
@@ -54,6 +48,7 @@ set(CMAKE_${ASM_DIALECT}_OUTPUT_EXTENSION .o)
 configure_file(${CMAKE_CURRENT_LIST_DIR}/CMake${ASM_DIALECT}Compiler.cmake.in
                ${CMAKE_PLATFORM_INFO_DIR}/CMake${ASM_DIALECT}Compiler.cmake)
 
-include_directories(${AMIGA_PATH_PREFIX}/m68k-amigaos/ndk-include) 
+include_directories(${AMIGA_OS_PATH_PREFIX}/ndk13-include) 
+include_directories(${AMIGA_OS_PATH_PREFIX}/ndk-include) 
 
 set(ASM_DIALECT)
