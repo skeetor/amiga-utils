@@ -24,7 +24,7 @@ cd build-release
 make && make install
 ```
 
-To also build all sample projects inm one go, execute the following
+To also build all sample projects in one go, execute the following
 
 ```
 cd amiga-utils/projects

@@ -18,19 +18,19 @@ C_FUNCTION void memcpyw(uint32_t items, void *src, void *dest);
  * The number of copied items (including the 0-terminator)
  * is returned.
  */
-C_FUNCTION void zcopyb(void *src, void *dest);
+C_FUNCTION uint32_t zcopyb(void *src, void *dest);
 
 /**
  * Copy 16 bit values until a 0-terminator is encountered.
  * The number of copied items (including the 0-terminator)
  * is returned.
  */
-C_FUNCTION void zcopyw(void *src, void *dest);
+C_FUNCTION uint32_t zcopyw(void *src, void *dest);
 /**
  * Copy 32 bit values until a 0-terminator is encountered.
  * The number of copied items (including the 0-terminator)
  * is returned.
  */
-C_FUNCTION void zcopyl(void *src, void *dest);
+C_FUNCTION uint32_t zcopyl(void *src, void *dest);
 
 #endif // _UTILSLIB_MEMORY_H
