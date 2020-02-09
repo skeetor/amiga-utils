@@ -10,10 +10,12 @@ set(ASM_SOURCES ${ASM_SOURCES}
 	${CMAKE_CURRENT_SOURCE_DIR}/dos/WriteString.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/string/strlen.s
-	${CMAKE_CURRENT_SOURCE_DIR}/string/to_decu16.s
-	${CMAKE_CURRENT_SOURCE_DIR}/string/to_decs16.s
-	${CMAKE_CURRENT_SOURCE_DIR}/string/to_decu32.s
-	${CMAKE_CURRENT_SOURCE_DIR}/string/to_decs32.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/to_string.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/word_to_string.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/string_to_word.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/long_to_string.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/string_to_long.s
+	${CMAKE_CURRENT_SOURCE_DIR}/string/format_string.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/mem/memcpyl.s
 	${CMAKE_CURRENT_SOURCE_DIR}/mem/memcpyw.s
@@ -26,6 +28,13 @@ set(ASM_SOURCES ${ASM_SOURCES}
 
 	${CMAKE_CURRENT_SOURCE_DIR}/math/div32.s
 	${CMAKE_CURRENT_SOURCE_DIR}/math/mult32.s
+
+	PARENT_SCOPE  
+)
+
+set(SOURCES ${SOURCES}
+#	${CMAKE_CURRENT_SOURCE_DIR}/string/snprintf.cpp
+#	${CMAKE_CURRENT_SOURCE_DIR}/string/vsnprintf.cpp
 
 	PARENT_SCOPE  
 )
