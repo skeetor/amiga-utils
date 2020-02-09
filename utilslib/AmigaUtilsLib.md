@@ -50,6 +50,7 @@ The library contains only code, which has no additional dependencies. It can be 
 **Include:** "utils/string/string.h"<br>
 **Description:** This formats a string similar to sprintf. There are some differences though.<br>
 
+	* With "%b" you can create binary numbers<br>
 	* Floating point formats are not supported and willalways printf "INF"<br>
 	* The function will always return the number of character it would need to write to the buffer, even if the buffer is to small. However the function guarantees that there will be no buffer overruns, so the caller can always check if the required characters are more than the supplied buffer, in which case the string will be terminated.<br>
 	* passing nullpointers is safe and will never cause it to write there. In case of a string 
