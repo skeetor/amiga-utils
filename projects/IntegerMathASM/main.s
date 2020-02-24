@@ -1,7 +1,6 @@
 	include exec/types.i
 
 	include utils/system/libraries.i
-	include utils/graphics/gfxbase.i
 
 	section .text,code
 
@@ -46,7 +45,7 @@ PrintDivision:
 	move.l	a2,a7
 
 	lea		outbuffer,a0
-	jsr		puts
+	jsr		printString
 	
 	rts
 

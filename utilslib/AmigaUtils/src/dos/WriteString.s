@@ -15,10 +15,12 @@
 ;
 ; #####################################################
 
-puts::
+_printString::
+printString::
 	move.l	stdout,d0
 
-putsf::
+_writeString::
+writeString::
 	move.l	d0,d1			; FileHandle
 	move.l	a0,d2			; Buffer
 	jsr		strlen

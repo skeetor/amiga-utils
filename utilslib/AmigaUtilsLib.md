@@ -25,6 +25,25 @@ The library contains only code, which has no additional dependencies. It can be 
 **Include:** <br>
 **Description:** Closes the library.<br>
 
+**Name:**`printString`:<br>
+**Include:** <br>
+**Description:** Print a string to stdout.<br>
+
+**Name:**`writeString`:<br>
+**Include:** <br>
+**Description:** Write a string to the specified filehandle.<br>
+
+**Name:**`EnableDiskIO`:<br>
+**Include:** dos.h<br>
+**Description:** If the user enters SystemSave() state, all IRQs and DMA are disabled. If the user wants to use the dos.library functions for accessing the regular filesystem, this helper function will enable the appropriate settings.<br>
+Note that this is not needed if the settings are already enabled, or if EnableDiskIO was already called before. If the user changed the DMA/IRQ settings afterwards this may be needed to be called again before accessing dos.library functions.
+
+**Name:**`LoadFile`:<br>
+**Include:** dos.h<br>
+**Description:** Loads a file into memory. The memory is allocated and the file is loaded. If an error occured the memory is freed and a nullptr is returned.<br> On success the pointer to the allocated memory is returned and the filesize.
+The allocated memory is allocated using the allocation flags from the exec library (i.E. MEMF_CHIP, ...) which have to be specified by the caller. The caller is responsible for freeing the memory after it is no longer needed using FreeMem()<br>
+If this function is used in SystemSave() state, the disk IO must be enabled for it to work.
+
 #### Graphics
 
 #### exports<br>

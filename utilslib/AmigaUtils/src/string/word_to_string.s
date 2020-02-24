@@ -26,7 +26,7 @@
 ; D0.L: Length of string
 ; A0: Points to the first byte after the number string
 ;
-; Modified: D0-D3, A0-A3
+; Modified: D0-D2, A0-A3
 ;
 ; #####################################################
 
@@ -34,26 +34,26 @@
 
 _sWordToString::
 
-	movem.l	d2-d3/a2-a3,-(sp)
+	movem.l	d2/a2-a3,-(sp)
 
 	moveq	#0,d2
 	move.w	a1,d2
 
 	jsr		uWordToString
 
-	movem.l	(sp)+,d2-d3/a2-a3
+	movem.l	(sp)+,d2/a2-a3
 	rts
 
 _uWordToString::
 
-	movem.l	d2-d3/a2-a3,-(sp)
+	movem.l	d2/a2-a3,-(sp)
 
 	moveq	#0,d2
 	move.w	a1,d2
 
 	jsr		uWordToString
 
-	movem.l	(sp)+,d2-d3/a2-a3
+	movem.l	(sp)+,d2/a2-a3
 	rts
 
 sWordToString::

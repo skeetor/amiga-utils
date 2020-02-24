@@ -82,19 +82,19 @@ sLongToString::
     rts
 
 uLongToString::
-    move.l  a0,a1
-    add.l   d1,a1           ; End of buffer
-
     ; If highword is zero we can use
     ; the faster 16 bit conversion
-    move.l  d0,d1
-    swap    d1
-    tst.w   d1
-    bne.s   .CheckBase
+    move.l  d0,d3
+    swap    d3
+    tst.w   d3
+    bne.s   .LongString
 
     jmp     uWordToString
 
-.CheckBase:
+.LongString:
+    move.l  a0,a1
+    add.l   d1,a1           ; End of buffer
+
     cmp.w   #16,d2
     bne.s   .NotBase16
     jmp     toHex

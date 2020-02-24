@@ -27,7 +27,7 @@ typedef void (*VBICallbackProc)(void);
  * and may be called from the client caller.
  * Calling this, while the VBI is currently processed, may result in UB.
  */
-C_FUNCTION VBICallbackProc SetVBI(VBICallbackProc callback);
+C_FUNCTION VBICallbackProc SetVBI(VBICallbackProc callback REGISTER_PARAM(a0));
 
 /**
  * Clear the current Vertical Blank Interrupt handler. This will not disable

@@ -2,7 +2,7 @@
 	
 	include utils/hardware/custom_registers.i
 	include utils/system/libraries.i
-	include utils/graphics/gfxbase.i
+	include utils/gfx/gfxbase.i
 
 COPPER_START_LINE	EQU		36
 COPPER_PAL_END_LINE	EQU		313
@@ -152,7 +152,7 @@ CopperAnimation:
 
 InitDebug:
 	lea		WaitMouseButtonTxt,a0
-	jsr		puts
+	jsr		printString
 
 .WaitStart:
 	
@@ -160,12 +160,12 @@ InitDebug:
 	beq		.WaitStart
 
 	lea		NewlineTxt,a0
-	jsr		puts
+	jsr		printString
 
 	lea		MouseButtonExitTxt,a0
-	jsr		puts
+	jsr		printString
 	lea		NewlineTxt,a0
-	jsr		puts
+	jsr		printString
 
 	rts
 

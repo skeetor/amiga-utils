@@ -41,13 +41,63 @@ GOTO	MACRO   ; functionOffset
 
 
 ; ******************************************************
-; Jump to the librar function instead of jsr
+; Jump to the library function instead of jsr
 ; ******************************************************
 JMPLIB	MACRO   ; functionOffset
 	IFGT NARG-1
 		FAIL [ERR] JMPLIB MACRO - too many arguments !!!
 	ENDC
 	GOTO     _LVO\1
+
+    ENDM
+
+
+; ******************************************************
+; Allocate space on the stack and align the stack. For
+; the alignment a Dn register is needed.
+;
+; Arguments:
+;	SIZE  size to be allocated
+;	ALIGNMENT Number to align to
+;	REGISTER Register which is used for the aligment.
+;			 This register will contain the original
+;			 stackpointer, before the allocation.
+;
+; Result:
+;	Dn contains the stackpointer before the allocation
+;	and must be restored to when the stack is cleaned up.
+;
+;	A7 is decreased and points to the aligned block which
+;	contains at least SIZE bytes.
+;
+; Example:
+;	STACK_ALLOC		25,4,d0 will reserve at least 25
+;		bytes on the stack and align it to 4, so it can
+;		be used for a DOS library call.
+;
+; Note: Due to the alignment, the size does not have to be
+; an even number, only the alignment must be even.
+; If multiple structures are allocated in a row, obviously
+; the first returned stackpointer is the original one.
+;
+; ******************************************************
+
+STACK_ALLOC MACRO
+
+SA_SIZE     set \+
+SA_ALIGN    set \+
+
+    IFGT SA_ALIGN-255
+        FAIL [ERR] Alignment must be < 255
+		MEXIT
+    ENDC
+
+SA_MODULO set SA_SIZE-((SA_SIZE/SA_ALIGN)*SA_ALIGN)
+
+    move.l      a7,\3
+    sub.l       #SA_SIZE+(SA_ALIGN-SA_MODULO),\3
+    and.b       #$100-SA_ALIGN,\3
+    exg      	\3,a7
 
     ENDM
 

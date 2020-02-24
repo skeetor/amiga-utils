@@ -14,8 +14,23 @@
 #include <exec/types.h>
 #endif
 
+#ifndef __GNUC__
 #ifndef SDI_COMPILER_H
 #include <SDI_compiler.h>
+#endif
+
+#else	// __GNUC__
+
+#include <utils/utils_def.h>
+
+#define ASM
+#define REG(a, b) b REGISTER_PARAM(a)
+
+#endif	// __GNUC__
+
+#ifdef __cplusplus
+extern "C"
+{
 #endif
 
 /*
@@ -144,7 +159,7 @@ extern UBYTE mt_Enable;
 ;   the last position has been played (calls mt_end(). Otherwise, the
 ;   song is restarted and mt_SongEnd is incremented to count the restarts.
 ;   It is reset to 0 after mt_init().
-/*
+*/
 
 extern BYTE mt_SongEnd;
 
@@ -164,5 +179,10 @@ extern UBYTE mt_E8Trigger;
 */
 
 extern UBYTE mt_MusicChannels;
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
