@@ -1,6 +1,48 @@
 	IFND _UTILS_CUSTOM_REGISTERS_I
 _UTILS_CUSTOM_REGISTERS_I EQU 1
 
+; INTENA bits for interrupt
+
+INT_SET		EQU	(1<<15)			; IRQ control bit set/clear
+INT_INTEN	EQU	(1<<14)			; Master interrupt (enable only, no request)
+INT_EXTER	EQU	(1<<13)			; External interrupt
+INT_DSKSYN	EQU (1<<12)			; Disk sync register (DSKSYNC) matches disk
+INT_RBF		EQU (1<<11)			; Serial port receive buffer full
+INT_AUD3	EQU (1<<10)			; Audio channel 3 block finished
+INT_AUD2	EQU (1<<9)			; Audio channel 2 block finished
+INT_AUD1	EQU (1<<8)			; Audio channel 1 block finished
+INT_AUD0	EQU (1<<7)			; Audio channel 0 block finished
+INT_BLIT	EQU (1<<6)			; Blitter has finished
+INT_VERTB	EQU (1<<5)			; Start of vertical blank
+INT_COPER	EQU (1<<4)			; Coprocessor
+INT_PORTS	EQU (1<<3)			; I/O Ports and timers
+INT_SOFT	EQU (1<<2)			; Reserved for software initiated interrupt.
+INT_DSKBLK	EQU (1<<1)			; Disk block finished
+INT_TBE		EQU (1<<0)			; Serial port transmit buffer empty
+
+
+; DMACON DMA bits
+
+DMA_SET		EQU	(1<<15)			; DMA control bit set/clear
+DMA_BBUSY	EQU (1<<14)			; Blitter busy status bit (read only)
+DMA_BZERO	EQU (1<<13)			; Blitter logic zero status bit (read only)
+DMA_UNUSED1	EQU (1<<12)
+DMA_UNUSED0	EQU (1<<11)
+DMA_BLTPRI	EQU (1<<10)			; Blitter DMA priority (over CPU micro) "blitter nasty"
+DMA_DMAEN	EQU (1<<9)			; Enable all DMA below (also UHRES DMA)
+DMA_BPLEN	EQU (1<<8)			; Bit plane DMA enable
+DMA_COPEN	EQU (1<<7)			; Coprocessor DMA enable
+DMA_BLTEN	EQU (1<<6)			; Blitter DMA enable
+DMA_SPREN	EQU (1<<5)			; Sprite DMA enable
+DMA_DSKEN	EQU (1<<4)			; Disk DMA enable
+DMA_AUD3EN	EQU (1<<3)			; Audio channel 3 DMA enable
+DMA_AUD2EN	EQU (1<<2)			; Audio channel 2 DMA enable
+DMA_AUD1EN	EQU (1<<1)			; Audio channel 1 DMA enable
+DMA_AUD0EN	EQU (1<<0)			; Audio channel 0 DMA enable
+
+
+
+
 CIAAPRA		EQU $BFE001
 HWREGBASE	EQU $DFF000
 

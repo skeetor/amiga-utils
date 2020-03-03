@@ -8,6 +8,8 @@ set(ASM_SOURCES ${ASM_SOURCES}
 
 	${CMAKE_CURRENT_SOURCE_DIR}/dos/DOSLibrary.s
 	${CMAKE_CURRENT_SOURCE_DIR}/dos/WriteString.s
+	${CMAKE_CURRENT_SOURCE_DIR}/dos/GetFileSize.s
+	${CMAKE_CURRENT_SOURCE_DIR}/dos/FileLoad.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/string/strlen.s
 	${CMAKE_CURRENT_SOURCE_DIR}/string/to_string.s
@@ -28,6 +30,8 @@ set(ASM_SOURCES ${ASM_SOURCES}
 
 	${CMAKE_CURRENT_SOURCE_DIR}/math/div32.s
 	${CMAKE_CURRENT_SOURCE_DIR}/math/mult32.s
+
+	${CMAKE_CURRENT_SOURCE_DIR}/sound/ptplayer/ptplayer.asm
 
 	PARENT_SCOPE  
 )

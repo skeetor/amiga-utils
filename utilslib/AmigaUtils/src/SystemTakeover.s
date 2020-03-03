@@ -16,7 +16,7 @@ DMASET		= %1000001111100000
 _SystemSave::
 SystemSave::
 
-	movem.l	d0-a6,-(a7)
+	movem.l	d2-d7/a2-a6,-(a7)
 
 	move.w	#1,PAL_SYSTEM
 	move.l	4.w,a6
@@ -45,7 +45,7 @@ SystemSave::
 
 	;***	Store Custom Regs	***
 
-	lea	HWREGBASE,a6						; base address
+	lea		HWREGBASE,a6					; base address
 	move.w	ADKCONR_OFS(a6),ADK				; Store old ADKCON
 	move.w	INTENAR_OFS(a6),OldINTENA		; Store old INTENA
 	move.w	DMACONR_OFS(a6),DMAVal			; Store old DMA
@@ -58,7 +58,7 @@ SystemSave::
 	move.w	d0,INTREQ_OFS(a6)				; Clear all INT requests
 
 	move.l	$6c(a0),OldVBI
-	lea	NewVBI,a1
+	lea		NewVBI,a1
 	move.l	a1,$6c(a0)
 
 	move.w	#INTENASET!$C000,INTENA_OFS(a6)	; set Interrupts+ BIT 14/15
@@ -68,7 +68,7 @@ SystemSave::
 
 .END:
 
-	movem.l	(a7)+,d0-a6
+	movem.l	(a7)+,d2-d7/a2-a6
 
     rts
 
@@ -77,7 +77,7 @@ SystemRestore::
 
 	movem.l	d2-d7/a2-a6,-(a7)
 
-	lea	HWREGBASE,a6
+	lea		HWREGBASE,a6
 	clr.l	VBIptr
 
 	move.w	#$8000,d0
@@ -85,7 +85,7 @@ SystemRestore::
 	or.w	d0,DMAVal					; SET/CLR-Bit to 1
 	or.w	d0,ADK						; SET/CLR-Bit to 1
 	subq.w	#1,d0
-	jsr	WaitRaster
+	jsr		WaitRaster
 
 	move.w	d0,INTENA_OFS(a6)			; Clear all INT bits
 	move.w	d0,DMACON_OFS(a6)			; Clear all DMA channels
@@ -110,13 +110,13 @@ SystemRestore::
 
 	rts
 
-DoView:
+DoView::
 	; Two WaitTOF() calls are needed after the LoadView to wait for both the
 	; long and short frame copperlists of interlaced displays to finish.
 
 	CALLLIB LoadView
 	CALLLIB WaitTOF
-	JMPLIB WaitTOF
+	JMPLIB	WaitTOF
 
 *******************************************
 *** Get Address of the VBR		***
@@ -166,7 +166,7 @@ NewVBI:
 	jsr	(a0)
 	
 .noVBI:
-	lea	$dff09c,a6
+	lea		INTREQ,a6
 	moveq	#$20,d0
 	move.w	d0,(a6)
 	move.w	d0,(a6)			; twice to avoid a4k hw bug
@@ -182,15 +182,15 @@ NewVBI:
 	section .bss,bss
 
 	CNOP 0,2
-OldView:	ds.l 1
+OldView::	ds.l 1
 _PAL_SYSTEM::
 PAL_SYSTEM::	ds.w 1
 
-OldCop1:	ds.l 1
-OldCop2:	ds.l 1
-VBRptr:		ds.l 1
-OldVBI:		ds.l 1
-ADK:		ds.w 1
-OldINTENA:	ds.w 1
-DMAVal:		ds.w 1
-VBIptr:		ds.l 1
+OldCop1::	ds.l 1
+OldCop2::	ds.l 1
+VBRptr::	ds.l 1
+OldVBI::	ds.l 1
+ADK::		ds.w 1
+OldINTENA::	ds.w 1
+DMAVal::	ds.w 1
+VBIptr::	ds.l 1

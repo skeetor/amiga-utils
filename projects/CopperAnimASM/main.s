@@ -3,7 +3,7 @@
 
 	include utils/hardware/custom_registers.i
 	include utils/system/libraries.i
-	include utils/graphics/gfxbase.i
+	include utils/gfx/gfxbase.i
 
 	section .text,code
 
@@ -11,15 +11,15 @@ _start:
 
 	moveq	#0,d0				; Version
 	jsr		OpenDOSLibrary
-	moveq	#0,d0				; Version
-	jsr		OpenGraphicsLibrary
+	;moveq	#0,d0				; Version
+	;jsr		OpenGraphicsLibrary
 
-	move.l	GraphicsBase,a6
-	move.l	gb_ActiView(a6),a0
-	move.l	v_ViewPort(a0),a0
-	move.l	vp_ColorMap(a0),a0
-	move.w	cm_Count(a0),d0
-	move.l	cm_ColorTable(a0),a1
+	;move.l	GraphicsBase,a6
+	;move.l	gb_ActiView(a6),a0
+	;move.l	v_ViewPort(a0),a0
+	;move.l	vp_ColorMap(a0),a0
+	;move.w	cm_Count(a0),d0
+	;move.l	cm_ColorTable(a0),a1
 
 	jsr	DebugInit
 
@@ -51,7 +51,7 @@ _start:
 .Quit:
 
 	jsr		CloseDOSLibrary
-	jsr		CloseGraphicsLibrary
+	;jsr		CloseGraphicsLibrary
 
 	moveq	#0,d0			;return 0 to the system
 	rts
@@ -72,7 +72,7 @@ VerticalBlankIRQ:
 
 DebugInit:
 	lea		WaitMouseButtonTxt,a0
-	jsr		puts
+	jsr		printString
 
 .WaitStart:
 	
@@ -80,12 +80,12 @@ DebugInit:
 	beq		.WaitStart
 
 	lea		NewlineTxt,a0
-	jsr		puts
+	jsr		printString
 
 	lea		MouseButtonExitTxt,a0
-	jsr		puts
+	jsr		printString
 	lea		NewlineTxt,a0
-	jsr		puts
+	jsr		printString
 
 	rts
 

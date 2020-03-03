@@ -9,7 +9,7 @@
 #define COPPER_PAL_END_LINE		308
 
 struct CopperInfo;
-typedef void (*CopperInfoCallbackProc)(CopperInfo *copperInfo);
+typedef void (*CopperInfoCallbackProc)(CopperInfo *copperInfo REGISTER_PARAM(a0));
 
 /***************************************************
  * CopperInfo defines the state for
