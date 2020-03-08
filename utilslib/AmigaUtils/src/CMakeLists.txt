@@ -1,5 +1,7 @@
 
-set(ASM_SOURCES ${ASM_SOURCES}
+set(ASM_SOURCES
+	${ASM_SOURCES}  
+	
 	${CMAKE_CURRENT_SOURCE_DIR}/SystemTakeover.s
 	${CMAKE_CURRENT_SOURCE_DIR}/WaitRaster.s
 	${CMAKE_CURRENT_SOURCE_DIR}/DebugPowerLED.s
@@ -10,6 +12,7 @@ set(ASM_SOURCES ${ASM_SOURCES}
 	${CMAKE_CURRENT_SOURCE_DIR}/dos/WriteString.s
 	${CMAKE_CURRENT_SOURCE_DIR}/dos/GetFileSize.s
 	${CMAKE_CURRENT_SOURCE_DIR}/dos/FileLoad.s
+	${CMAKE_CURRENT_SOURCE_DIR}/dos/PrintF.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/string/strlen.s
 	${CMAKE_CURRENT_SOURCE_DIR}/string/to_string.s
@@ -32,13 +35,11 @@ set(ASM_SOURCES ${ASM_SOURCES}
 	${CMAKE_CURRENT_SOURCE_DIR}/math/mult32.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/sound/ptplayer/ptplayer.asm
-
-	PARENT_SCOPE  
 )
 
-set(SOURCES ${SOURCES}
-#	${CMAKE_CURRENT_SOURCE_DIR}/string/snprintf.cpp
-#	${CMAKE_CURRENT_SOURCE_DIR}/string/vsnprintf.cpp
-
-	PARENT_SCOPE  
+set(SOURCES
+	${SOURCES}
 )
+
+set(ASM_SOURCES ${ASM_SOURCES} PARENT_SCOPE)
+set(SOURCES ${SOURCES} PARENT_SCOPE)

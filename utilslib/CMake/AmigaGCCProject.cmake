@@ -30,9 +30,10 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
 endif("${CMAKE_BUILD_TYPE}" STREQUAL "") 
 
 # Set compiler flags which should be kept for both C and C++.
-SET(COMMON_COMPILER_FLAGS "--save-temps -Wall -pedantic -mcrt=nix13 -fno-exceptions -fno-rtti")
+SET(COMMON_COMPILER_FLAGS "--save-temps -Wall -pedantic -mcrt=nix13 -fno-exceptions")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${COMMON_COMPILER_FLAGS}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMMON_COMPILER_FLAGS}")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1 -g -mregparm")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -mregparm")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${COMMON_COMPILER_FLAGS} -O2")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS} ${COMMON_COMPILER_FLAGS} -O1")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMMON_COMPILER_FLAGS} -fno-rtti")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1 -g -mregparm -fno-rtti")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -mregparm -fno-rtti")
