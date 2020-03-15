@@ -13,6 +13,8 @@
 ;
 ; RETURN: D0: Number of written bytes
 ;
+; Modified: D0-D1,A0-A1
+;
 ; #####################################################
 
 _printString::
@@ -21,14 +23,14 @@ printString::
 
 _writeString::
 writeString::
+	movem.l	d2-d3/a6,-(sp)
 	move.l	d0,d1			; FileHandle
 	move.l	a0,d2			; Buffer
 	jsr		strlen
 	move.l	d0,d3			; Length
 
-	move.l	a6,-(a7)
 	move.l	DOSBase,a6
 	CALLLIB	Write
-	move.l	(a7)+,a6
-	
+	movem.l	(sp)+,d2-d3/a6
+
 	rts

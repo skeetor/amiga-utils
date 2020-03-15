@@ -5,7 +5,6 @@
 	section .text,code
 
 _start:
-
 	moveq	#0,d0				; Version
 	jsr		OpenDOSLibrary
 
