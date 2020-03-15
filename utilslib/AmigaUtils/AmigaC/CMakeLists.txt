@@ -13,6 +13,10 @@ set(TARGET_LIB_DIR "${CMAKE_BINARY_DIR}/lib")
 
 #set(CMAKE_AMIGA_VASM_FLAGS "${CMAKE_AMIGA_VASM_FLAGS} -m68010")
 
+#TODO: Why is this not set by the compiler setup cmake script as for the utils library?
+include_directories(${AMIGA_OS_PATH_PREFIX}/ndk13-include) 
+include_directories(${AMIGA_OS_PATH_PREFIX}/ndk-include) 
+
 set(SOURCES "")			# For C/C++ sources
 set(ASM_SOURCES "")		# For assembler sources
 

@@ -43,6 +43,10 @@ There will two libraries installed with utillity functions, usefull for common A
 
 This is a library with no external dependencies, so it can be linked to any project. Exported functions are also usable from a GCC project.
 
+##### libAmigaC.a
+
+This is a library with a limited set of standard C functions, which is used to allow including c modules into the Utils library, without injecting a full C library. This is not supposed to be a full standard C library implementation and should not be linked if a C/CPP project is used as it is intended for pure ASM projects only.
+
 ##### libAmigaGCCUtils.a
 
 This library provides tools which require a C runtime environment and thus can not be simply linked against a pure ASM project.
@@ -85,13 +89,17 @@ A project which creates a very simple static copperlist.
 
 A simple copperlist, where the copper is used to move a colorbar with the vertical blank interrupt. This project also shows how to take into account the difference between PAL and NTSC and how the copper has to be used when the extra lines of the PAL screen are to be used.
 
-### IntegerMathASM
+### IntegerMath
 
 Demonstration for the 32 bit div/mult and printing formatted strings from ASM.
+The CPP project also includes a some performance comparison and selftest.
 
-### IntegerMathCPP
+### MODPlayer
 
-Demo to use the faster formatString function, as well as some performance comparison and selftest.
+Demonstrates the usage of the ptplayer module for playing MOD soundfiles.
 
+### Compression
+
+Project for testing and showing the usage of the zlib compression.
 
 Help: -D CMAKE_FIND_DEBUG_MODE=ON

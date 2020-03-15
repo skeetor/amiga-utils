@@ -6,7 +6,7 @@ The library contains only code, which has no additional dependencies. It can be 
 
 #### Copper
 
-**Name:**`CreateCopperList`:<br>
+**Name:** `CreateCopperList`:<br>
 **Include:** `utils/hardware/copper.i`<br>
 **Description:** Creates a list of copperinstructions for the specified region.<br>
 
@@ -17,28 +17,28 @@ The library contains only code, which has no additional dependencies. It can be 
 `DOSBase`: Library base pointer<br>
 `stdout`: Standard output filehandle<br>
 
-**Name:**`OpenDOSLibrary`:<br>
+**Name:** `OpenDOSLibrary`:<br>
 **Include:** <br>
 **Description:** Opens the library.<br>
 
-**Name:**`CloseDOSLibrary`:<br>
+**Name:** `CloseDOSLibrary`:<br>
 **Include:** <br>
 **Description:** Closes the library.<br>
 
-**Name:**`printString`:<br>
+**Name:** `printString`:<br>
 **Include:** <br>
 **Description:** Print a string to stdout.<br>
 
-**Name:**`writeString`:<br>
+**Name:** `writeString`:<br>
 **Include:** <br>
 **Description:** Write a string to the specified filehandle.<br>
 
-**Name:**`EnableDiskIO`:<br>
+**Name:** `EnableDiskIO`:<br>
 **Include:** dos.h<br>
 **Description:** If the user enters SystemSave() state, all IRQs and DMA are disabled. If the user wants to use the dos.library functions for accessing the regular filesystem, this helper function will enable the appropriate settings.<br>
 Note that this is not needed if the settings are already enabled, or if EnableDiskIO was already called before. If the user changed the DMA/IRQ settings afterwards this may be needed to be called again before accessing dos.library functions.
 
-**Name:**`LoadFile`:<br>
+**Name:** `LoadFile`:<br>
 **Include:** dos.h<br>
 **Description:** Loads a file into memory. The memory is allocated and the file is loaded. If an error occured the memory is freed and a nullptr is returned.<br> On success the pointer to the allocated memory is returned and the filesize.
 The allocated memory is allocated using the allocation flags from the exec library (i.E. MEMF_CHIP, ...) which have to be specified by the caller. The caller is responsible for freeing the memory after it is no longer needed using FreeMem()<br>
@@ -50,22 +50,22 @@ If this function is used in SystemSave() state, the disk IO must be enabled for 
 `GraphicsName`: Name of the library<br>
 `GraphicsBase`: Library base pointer<br>
 
-**Name:**`OpenGraphicsLibrary`:<br>
+**Name:** `OpenGraphicsLibrary`:<br>
 **Include:** <br>
 **Description:** Opens the library.<br>
 
-**Name:**`CloseGraphicsLibrary`:<br>
+**Name:** `CloseGraphicsLibrary`:<br>
 **Include:** <br>
 **Description:** Closes the library.<br>
 
 #### strings
 
-**Name:**`puts`:<br>
-**Name:**`putsf`:<br>
+**Name:** `puts`:<br>
+**Name:** `putsf`:<br>
 **Include:** "utils/string/string.h"<br>
 **Description:** Prints a 0-terminated string to stdout or the specified file.
 
-**Name:**`formatString`:<br>
+**Name:** `formatString`:<br>
 **Include:** "utils/string/string.h"<br>
 **Description:** This formats a string similar to sprintf. There are some differences though.<br>
 
@@ -76,74 +76,90 @@ If this function is used in SystemSave() state, the disk IO must be enabled for 
 	"[null]" is inserted.<br>
 	* The function guarantees to always provide a temrinating 0-byte in the outputbuffer, except when the outputbuffer is either a null pointer or the buffersize is 0. In all other cases the resulting string will be null-terminated at the cost of a possible truncated string.<br>
 
-**Name:**`uWordToString`:<br>
-**Name:**`sWordToString`:<br>
-**Name:**`uLongToString`:<br>
-**Name:**`sLongToString`:<br>
+**Name:** `uWordToString`:<br>
+**Name:** `sWordToString`:<br>
+**Name:** `uLongToString`:<br>
+**Name:** `sLongToString`:<br>
 **Include:** "utils/string/numbers.h"<br>
 **Description:** Prints an signed/unsigned word/long value to a stringbuffer. The resulting number will never be 0 terminated and can thus be used to insert strings in the middle of an existing string. Otherwise the same guarantees apply as for `formatString`.
 
-**Name:**`stringToSWord`:<br>
-**Name:**`stringToUWord`:<br>
-**Name:**`stringToSLong`:<br>
-**Name:**`stringToULong`:<br>
+**Name:** `stringToSWord`:<br>
+**Name:** `stringToUWord`:<br>
+**Name:** `stringToSLong`:<br>
+**Name:** `stringToULong`:<br>
 **Include:** "utils/string/numbers.h"<br>
 **Description:** Converts a string to a signed/unsigned word/long value. The conversions stops on the first non-numeric character for the given base, or if an overflow would occur. An appropriate returncode can be retrieved, as well as the pointer to the first not-converted character.
 
 #### math
 
-**Name:**`div32s`:<br>
+**Name:** `div32s`:<br>
 **Include:** <br>
 **Description:** Divide 32 bit signed values and returns result and modulo.
 
-**Name:**`div32u`:<br>
+**Name:** `div32u`:<br>
 **Include:** <br>
 **Description:** Divide 32 bit unsigned values and returns result and modulo.
 
-**Name:**`mult32s`:<br>
+**Name:** `mult32s`:<br>
 **Include:** <br>
 **Description:** Multiplies 32 bit signed values.
 
-**Name:**`mult32u`:<br>
+**Name:** `mult32u`:<br>
 **Include:** <br>
 **Description:** Multiplies 32 bit unsigned values.
 
 #### mem
 
-**Name:**`memcpyw`:<br>
+**Name:** `memcpyw`:<br>
 **Include:** <br>
 **Description:** Copies N 16 bit values.
 
-**Name:**`memcpyl`:<br>
+**Name:** `memcpyl`:<br>
 **Include:** <br>
 **Description:** Copies N 32 bit values.
 
 #### strings
 
-**Name:**`strlen`:<br>
+**Name:** `formatString`:<br>
+**Include:** <br>
+**Description:** A faster implementation of a snprintf style string formatter with some extensions to also print binary numbers, as well as protection from buffer overflows.
+
+**Name:** `strlen`:<br>
 **Include:** <br>
 **Description:** Returns the length of a c-string.
 
-**Name:**`toDecimalS8`:<br>
+**Name:** `toDecimalS8`:<br>
 **Include:** <br>
 **Description:** Converts a signed 8 bit value to a decimal c-string.
 
-**Name:**`toDecimalS16`:<br>
+**Name:** `toDecimalS16`:<br>
 **Include:** <br>
 **Description:** Converts a signed 16 bit value to a decimal c-string.
 
-**Name:**`toDecimalS32`:<br>
+**Name:** `toDecimalS32`:<br>
 **Include:** <br>
 **Description:** Converts a signed 32 bit value to a decimal c-string.
 
-**Name:**`toDecimalU8`:<br>
+**Name:** `toDecimalU8`:<br>
 **Include:** <br>
 **Description:** Converts an unsigned 8 bit value to a decimal c-string.
 
-**Name:**`toDecimalU16`:<br>
+**Name:** `toDecimalU16`:<br>
 **Include:** <br>
 **Description:** Converts an unsigned 16 bit value to a decimal c-string.
 
-**Name:**`toDecimalU32`:<br>
+**Name:** `toDecimalU32`:<br>
 **Include:** <br>
 **Description:** Converts an unsigned 32 bit value to a decimal c-string.
+
+#### tools
+
+#### zlib library 1.2.11
+
+**Name:** `CompressData`:<br>
+**Include:** <br>
+**Description:** zlib Compression for a fixed size memory block
+
+**Name:** `UncompressData`:<br>
+**Include:** <br>
+**Description:** zlib Decompression for a fixed size memory block

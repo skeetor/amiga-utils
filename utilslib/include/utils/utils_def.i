@@ -101,4 +101,60 @@ SA_MODULO set SA_SIZE-((SA_SIZE/SA_ALIGN)*SA_ALIGN)
 
     ENDM
 
+MACRO_NOP	MACRO
+	ENDM
+
+ISREGISTER MACRO
+REGISTER SET 0
+REGNUM SET 0
+
+	REPT 8
+		IFC \1,d\<REGNUM>
+REGISTER SET 1
+		endif
+
+		IFC \1,D\<REGNUM>
+REGISTER SET 1
+		endif
+
+		IFC \1,a\<REGNUM>
+REGISTER SET 1
+		endif
+
+		IFC \1,A\<REGNUM>
+REGISTER SET 1
+		endif
+
+REGNUM SET \<REGNUM>+1
+	ENDR
+
+	ENDM
+
+STDCALL	MACRO
+
+CARG SET NARG
+STACKPTR SET 0
+
+; Push arguments in reverse order
+REPCOUNT SET \<CARG>-1
+
+	REPT NARG-1
+		ISREGISTER \.
+		IF REGISTER
+			movem.l	\.,-(sp)
+		ELSE
+			pea		\.
+		ENDIF
+
+		MACRO_NOP \-
+
+STACKPTR SET \<STACKPTR>+4
+
+	ENDR
+
+	jsr		_\1
+	add.l	#\<STACKPTR>,sp
+
+	ENDM
+
 	ENDIF

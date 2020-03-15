@@ -4,6 +4,36 @@
 
 	section .text,code
 
+_vPrintFormatted::
+	move.l	stdout,d0
+
+_vWriteFormatted::
+	bra.s	wfmIntern
+
+; #####################################################
+; Write string to stdout. For details refer to 
+; formatString.
+;
+; INPUT:
+;	A0: Formatstring
+;
+; RETURN: See formatString
+;
+; Modified: D0, D1, A0-A1
+;
+; #####################################################
+
+_printFormatted::
+printFormatted::
+	move.l	stdout,d0
+
+_writeFormatted::
+	lea		4(sp),a1
+	move.l	a1,d1
+
+wfmIntern:
+	move.l	#128,a1
+
 ; #####################################################
 ; Write string to stdout/file. For details refer to 
 ; formatString.
@@ -19,24 +49,6 @@
 ; Modified: D0, D1, A0-A1
 ;
 ; #####################################################
-
-_vPrintFormatted::
-	move.l	stdout,d0
-
-_vWriteFormatted::
-	bra.s	wfmIntern
-
-_printFormatted::
-printFormatted::
-	move.l	stdout,d0
-
-_writeFormatted::
-	lea		4(sp),a1
-	move.l	a1,d1
-
-wfmIntern:
-	move.l	#128,a1
-
 writeFormatted::
 	movem.l	d2-d3/a5-a6,-(sp)
 	movem.l	d0,-(sp)		; save Filehandle

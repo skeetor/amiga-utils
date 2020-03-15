@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 
 project(AllProjects)
 
+add_subdirectory(CompressionASM)
+add_subdirectory(CompressionCPP)
 add_subdirectory(CopperAnimASM)
 add_subdirectory(CopperAnimCPP)
 add_subdirectory(IntegerMathASM)
