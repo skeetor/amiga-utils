@@ -1,4 +1,6 @@
 
+add_subdirectory(tools)
+
 set(ASM_SOURCES
 	${ASM_SOURCES}  
 	

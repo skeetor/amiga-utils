@@ -1,0 +1,8 @@
+
+add_subdirectory(zlib)
+
+set(ASM_SOURCES ${ASM_SOURCES})
+set(SOURCES ${SOURCES})
+
+set(ASM_SOURCES ${ASM_SOURCES} PARENT_SCOPE)
+set(SOURCES ${SOURCES} PARENT_SCOPE)

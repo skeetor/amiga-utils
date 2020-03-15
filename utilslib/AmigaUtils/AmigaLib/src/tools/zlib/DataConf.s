@@ -1,0 +1,11 @@
+
+	section .data,data
+
+	CNOP 0,2
+ZLIB_VERSION:: dc.b '1.2.11f',0
+	CNOP 0,2
+ZLIB_VERNUM:: dc.w $12b0
+ZLIB_VER_MAJOR:: dc.w 1
+ZLIB_VER_MINOR:: dc.w 2
+ZLIB_VER_REVISION:: dc.w 11
+ZLIB_VER_SUBREVISION:: dc.w 0
