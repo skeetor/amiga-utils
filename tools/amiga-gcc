@@ -1,4 +1,5 @@
 #!/bin/bash
 
+# Show include path
+#amiga-executable $0 -Wp,-v $@
 amiga-executable $0 $@
-

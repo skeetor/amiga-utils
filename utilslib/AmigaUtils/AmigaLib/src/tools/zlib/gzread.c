@@ -5,6 +5,10 @@
 
 #include "gzguts.h"
 
+#ifdef _MSC_VER
+#pragma warning(disable : 4028 4142 4273)
+#endif
+
 /* Local functions */
 local int gz_load OF((gz_statep, unsigned char *, unsigned, unsigned *));
 local int gz_avail OF((gz_statep));

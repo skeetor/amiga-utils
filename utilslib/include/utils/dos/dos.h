@@ -1,9 +1,10 @@
 #ifndef _UTILSLIB_DOS_I
 #define _UTILSLIB_DOS_I 1
 
-#include <utils/utils_def.h>
-#include <dos/dos.h>
-#include <exec/memory.h>
+#include "utils/utils_def.h"
+#include "dos/dos.h"
+#include "exec/memory.h"
+#include "proto/exec.h"
 
 typedef Library DOSLibrary;
 

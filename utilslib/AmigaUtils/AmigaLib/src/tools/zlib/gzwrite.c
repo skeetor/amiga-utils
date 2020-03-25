@@ -5,6 +5,10 @@
 
 #include "gzguts.h"
 
+#ifdef _MSC_VER
+#pragma warning(disable : 4028 4142 4273)
+#endif
+
 /* Local functions */
 local int gz_init OF((gz_statep));
 local int gz_comp OF((gz_statep, int));

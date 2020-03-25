@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\AmigaPng.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\png.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngerror.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngget.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngmem.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngpread.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngread.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngrio.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngrtran.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngrutil.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngset.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngtest.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngtrans.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngwio.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngwrite.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngwtran.c" />
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngwutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\ANNOUNCE" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\AUTHORS" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\BUILD.md" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\CHANGES" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\LICENSE" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\README" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\TODO" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\TRADEMARK" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\amiga_png.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\config.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\png.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pngconf.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pngdebug.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pnginfo.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pnglibconf.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pngpriv.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pngstruct.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\unistd.h" />
+    <ClInclude Include="..\..\utilslib\include\utils\utils_def.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{EE06B276-8446-4175-B692-76AB8F0CCF10}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libPNG</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+    <SpectreMitigation>false</SpectreMitigation>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <SpectreMitigation>false</SpectreMitigation>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+    <SpectreMitigation>false</SpectreMitigation>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <SpectreMitigation>false</SpectreMitigation>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\build\lib\</OutDir>
+    <IntDir>$(SolutionDir)\build\obj\$(Platform)_$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)\..\utilslib\include;$(SolutionDir)\..\utilslib\include\utils\tools\zlib;$(SolutionDir)\..\utilslib\include\utils\tools\png</IncludePath>
+    <TargetName>$(Platform)_$(Configuration)_$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\build\lib\</OutDir>
+    <IntDir>$(SolutionDir)\build\obj\$(Platform)_$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)\..\utilslib\include;$(SolutionDir)\..\utilslib\include\utils\tools\zlib;$(SolutionDir)\..\utilslib\include\utils\tools\png</IncludePath>
+    <TargetName>$(Platform)_$(Configuration)_$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\build\lib\</OutDir>
+    <IntDir>$(SolutionDir)\build\obj\$(Platform)_$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)\..\utilslib\include;$(SolutionDir)\..\utilslib\include\utils\tools\zlib;$(SolutionDir)\..\utilslib\include\utils\tools\png</IncludePath>
+    <TargetName>$(Platform)_$(Configuration)_$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\build\lib\</OutDir>
+    <IntDir>$(SolutionDir)\build\obj\$(Platform)_$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)\..\utilslib\include;$(SolutionDir)\..\utilslib\include\utils\tools\zlib;$(SolutionDir)\..\utilslib\include\utils\tools\png</IncludePath>
+    <TargetName>$(Platform)_$(Configuration)_$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AssemblerOutput>All</AssemblerOutput>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <LinkTimeCodeGeneration>false</LinkTimeCodeGeneration>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AssemblerOutput>All</AssemblerOutput>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <LinkTimeCodeGeneration>false</LinkTimeCodeGeneration>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AssemblerOutput>All</AssemblerOutput>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <LinkTimeCodeGeneration>false</LinkTimeCodeGeneration>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AssemblerOutput>All</AssemblerOutput>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <LinkTimeCodeGeneration>false</LinkTimeCodeGeneration>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

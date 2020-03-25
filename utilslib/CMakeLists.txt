@@ -9,5 +9,9 @@ if(NOT CMAKE_BUILD_TYPE)
    set(CMAKE_BUILD_TYPE "Release")
 endif(NOT CMAKE_BUILD_TYPE) 
 
+add_definitions(-DHAVE_CONFIG_H)
+include_directories(${CMAKE_SOURCE_DIR}/include/utils/tools/zlib)
+include_directories(${CMAKE_SOURCE_DIR}/include/utils/tools/png)
+
 add_subdirectory(AmigaUtils)
 add_subdirectory(AmigaGCCUtils)

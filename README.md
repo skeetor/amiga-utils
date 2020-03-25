@@ -7,9 +7,8 @@ All features of the library have simple but fully working demonstration projects
 
 These are examples for creating Amiga Projects using AmigaOS compiler from bebbo: https://github.com/bebbo/amiga-gcc
 
-In order to use this you have to put the tools directory into your path and execute
+`make binutils gcc gprof fd2sfd fd2pragma ira sfdc vasm vbcc vlink libnix libgcc clib2 ndk ndk13`
 
-`. amiga-env`
 
 The examples should run on any kickstartfrom 1.x up.
 
@@ -21,7 +20,7 @@ The default prefix path for the toolchain is expected to be `/opt/amiga/`. If yo
 
 ```
 git clone https://github.com/skeetor/amiga-utils
-export PATH=<MYPATH>/amiga-utils/CMake/tools:$PATH
+export PATH=<MYPATH>/amiga-utils/tools:$PATH
 . amiga-env
 cd amiga-utils/utilslib
 cmake . -Bbuild-release
@@ -108,3 +107,48 @@ Demonstrates the usage of the ptplayer module for playing MOD soundfiles.
 Project for testing and showing the usage of the zlib compression.
 
 Help: -D CMAKE_FIND_DEBUG_MODE=ON
+
+Compiling m68k-amigaos:
+make update
+make -j 4 binutils gcc vasm vbcc vlink libnix libgcc clib2 ndk ndk13
+
+### PrintFormatted
+
+Demonstrates the usage of printing formatted strings.
+
+
+### ImageConvert
+
+A tool to convert between PNG and Amiga Bitplane format in both directions, reduce
+colors and other features.
+This tool is also available for Windows and Linux. It is not recommended though
+to run it directly on the Amiga as it is REALLY painfully slow.
+
+**Convert the input PNG file to an Palette PNG with 32 colors.**<br>
+ImageConvert -i tmp/green_orig.png -o tmp/green_orig_amiga.png --colors 32
+
+**Convert the input PNG file to an amiga bitplane format with a default of 5 bitplanes.
+The bitplanes are stored one after the other.**<br>
+ImageConvert -i tmp/green_orig.png -o amiga tmp/green_amiga.abpl
+
+**Convert the input PNG file to an amiga bitplane format with a default of 5 bitplanes.
+The bitplanes are stored interleaved**<br>
+ImageConvert -i tmp/green_orig.png -o amiga tmp/green_amiga.abpl --interleave
+
+**Convert the amiga bitplanefile to PNG.**<br>
+ImageConvert -i amiga tmp/green_amiga.abpl -o tmp/green_from_amiga.png
+
+**Build on Windows:**<br>
+`cd amiga-utils/pctools`<br>
+Doubleclick on `AmigaTools.sln` and build with Visual Studio (tested with 2019 Community Edition).
+
+**Build on Linux:**<br>
+With CLion just point it to the `amiga-utils` directory and it will load the `CMakeLists.txt` file. Note that this will ONLY build the PC Tools and not the Amiga versions.
+```
+cd amiga-utils
+cmake . -Bbuild-release
+cd build-release
+make
+```
+
+The tools works both as 3 2bit and 64 bit builds.

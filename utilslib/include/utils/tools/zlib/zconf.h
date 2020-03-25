@@ -245,7 +245,13 @@
      typedef unsigned NO_SIZE_T z_size_t;
 #  elif defined(STDC)
 #    include <stddef.h>
-     typedef size_t z_size_t;
+
+	#ifdef _MSC_VER
+		typedef unsigned int z_size_t;		// for 64 and 32 bit it should be the same (for now)
+	#else
+		typedef size_t z_size_t;
+	#endif
+
 #  else
      typedef unsigned long z_size_t;
 #  endif
