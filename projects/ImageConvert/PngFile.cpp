@@ -144,7 +144,8 @@ bool PngFile::parseImage(RGBAImage &image, Color32Palette &colors, bool alpha, C
 				}
 			}
 
-			colors[index].m_index++;
+			colors[index].m_count++;
+			colors[index].m_index = static_cast<uint32_t>(index);
 
 			img++;
 		}
@@ -415,6 +416,12 @@ bool PngFile::writePaletteRows(RGBAImage const &image, Color32Palette &colors)
 		for (uint32_t x = 0; x < image.m_width; x++)
 		{
 			size_t index = colors.find(*img);
+			if (index == -1)
+			{
+				fprintf(stderr, "[ERR] Invalid palette index in image\n");
+				return false;
+			}
+
 			*p++ = (uint8_t)colors[index].m_index;
 			img++;
 		}
