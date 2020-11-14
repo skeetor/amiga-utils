@@ -41,6 +41,8 @@ set(ASM_SOURCES
 
 set(SOURCES
 	${SOURCES}
+
+	${CMAKE_CURRENT_SOURCE_DIR}/algorithms/bsearch.cpp
 )
 
 set(ASM_SOURCES ${ASM_SOURCES} PARENT_SCOPE)

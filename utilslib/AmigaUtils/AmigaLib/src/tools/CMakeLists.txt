@@ -1,5 +1,6 @@
 
 add_subdirectory(zlib)
+add_subdirectory(libpng)
 
 set(ASM_SOURCES ${ASM_SOURCES})
 set(SOURCES ${SOURCES})

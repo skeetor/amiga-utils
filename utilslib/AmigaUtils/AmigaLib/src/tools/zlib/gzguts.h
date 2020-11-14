@@ -41,6 +41,7 @@
 
 #if defined(_WIN32) || defined(__CYGWIN__)
 #  define WIDECHAR
+#define WINAPI_FAMILY
 #endif
 
 #ifdef WINAPI_FAMILY

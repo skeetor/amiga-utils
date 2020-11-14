@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\tools">
+      <UniqueIdentifier>{71834b54-f5a9-42a0-98e1-31f87413d3d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\tools\png">
+      <UniqueIdentifier>{f47fa293-97a7-4126-b0fc-48ff51c7ec59}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\AmigaPng.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\png.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngerror.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngget.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngmem.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngpread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngrio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngrtran.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngrutil.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngset.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngtest.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngtrans.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngwio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngwrite.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngwtran.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\pngwutil.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\ANNOUNCE" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\AUTHORS" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\BUILD.md" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\CHANGES" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\LICENSE" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\README" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\TODO" />
+    <None Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\TRADEMARK" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\utilslib\AmigaUtils\AmigaLib\src\tools\libpng\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\amiga_png.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\png.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pngconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pngdebug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pnginfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pnglibconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pngpriv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\pngstruct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\tools\png\unistd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utilslib\include\utils\utils_def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

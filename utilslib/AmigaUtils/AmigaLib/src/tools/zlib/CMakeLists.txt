@@ -10,6 +10,9 @@ set(ASM_SOURCES
 set(SOURCES
 	${SOURCES}
 
+	${CMAKE_SOURCE_DIR}/include/utils/tools/zlib/zconf.h
+	${CMAKE_SOURCE_DIR}/include/utils/tools/zlib/zlib.h
+
 	${CMAKE_CURRENT_SOURCE_DIR}/adler32.c
 	${CMAKE_CURRENT_SOURCE_DIR}/crc32.h
 	${CMAKE_CURRENT_SOURCE_DIR}/crc32.c
@@ -32,8 +35,6 @@ set(SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/trees.c
 	${CMAKE_CURRENT_SOURCE_DIR}/trees.h
 	${CMAKE_CURRENT_SOURCE_DIR}/uncompr.c
-	${CMAKE_CURRENT_SOURCE_DIR}/zconf.h
-	${CMAKE_CURRENT_SOURCE_DIR}/zlib.h
 	${CMAKE_CURRENT_SOURCE_DIR}/zutil.c
 	${CMAKE_CURRENT_SOURCE_DIR}/zutil.h
 )
@@ -41,4 +42,4 @@ set(SOURCES
 set(ASM_SOURCES ${ASM_SOURCES} PARENT_SCOPE)
 set(SOURCES ${SOURCES} PARENT_SCOPE)
 
-message(STATUS "zLib added")
+message(STATUS "zLib 1.2.11f added")

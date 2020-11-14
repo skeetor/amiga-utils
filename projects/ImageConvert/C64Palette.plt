@@ -1,0 +1,16 @@
+       0:0xFF000000
+       1:0xFFFFFFFF
+       2:0xFF880000
+       3:0xFFAAFFEE
+       4:0xFFCC44CC
+       5:0xFF00CC55
+       6:0xFF0000AA
+       7:0xFFEEEE77
+       8:0xFFDD8855
+       9:0xFF664400
+      10:0xFFFF7777
+      11:0xFF333333
+      12:0xFF777777
+      13:0xFFAAFF66
+      14:0xFF0088FF
+      15:0xFFBBBBBB
