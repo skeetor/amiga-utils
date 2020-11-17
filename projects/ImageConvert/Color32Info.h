@@ -58,6 +58,7 @@ protected:
 public:
 	Color32 m_color;
 	uint32_t m_index;
+	uint32_t m_count;
 };
 
 class Color32Palette

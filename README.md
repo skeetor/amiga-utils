@@ -151,4 +151,4 @@ cd build-release
 make
 ```
 
-The tools works both as 3 2bit and 64 bit builds.
+The tools works both as 32/64 bit builds.

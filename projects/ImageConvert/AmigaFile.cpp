@@ -162,12 +162,24 @@ bool AmigaFile::load(RGBAImage &image, Color32Palette &colors, const char *filen
 				b += nextBpl;
 			}
 
-			if (!rgbFromIndex(palette, index, *p++))
+			if (!rgbFromIndex(palette, index, *p))
 			{
 				fprintf(stderr, "[ERR] Image file invalid. Index %u exceeds maximum supported colors of %u for %u bitplanes\n", index, 1 << bi.header.planes, bi.header.planes);
 				return false;
 			}
 
+			size_t pos = 0;
+			colors.add(*p, &pos);
+			if (pos == -1)
+			{
+				fprintf(stderr, "[ERR] Unable to add color to palette\n");
+				return false;
+			}
+
+			colors[pos].m_count++;
+			colors[pos].m_index = index;
+
+			p++;
 			index = 0;
 
 			bit >>= 1;

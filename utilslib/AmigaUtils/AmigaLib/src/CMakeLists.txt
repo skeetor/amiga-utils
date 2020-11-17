@@ -35,6 +35,7 @@ set(ASM_SOURCES
 
 	${CMAKE_CURRENT_SOURCE_DIR}/math/div32.s
 	${CMAKE_CURRENT_SOURCE_DIR}/math/mult32.s
+	${CMAKE_CURRENT_SOURCE_DIR}/math/rnd_xorshift.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/sound/ptplayer/ptplayer.asm
 )

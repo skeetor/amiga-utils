@@ -303,13 +303,13 @@ namespace PnnQuant
 
 	static ColorMatch &bestMatchColorIndex(SortedArray<ColorMatch> &palette, const ColorMatch &color)
 	{
-		uint32_t index = static_cast<uint32_t>(palette.find(color));
+		size_t index = static_cast<uint32_t>(palette.find(color));
 		if (index == -1)
 		{
 			double bestAngle = DBL_MAX;
 			double bestDistance = DBL_MAX;
 
-			for (uint32_t pos = 0; pos < palette.size(); pos++)
+			for (size_t pos = 0; pos < palette.size(); pos++)
 			{
 				ColorMatch &paletteColor = palette[pos];
 

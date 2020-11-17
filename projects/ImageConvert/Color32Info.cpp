@@ -95,6 +95,7 @@ REGPARAM(0) void Color32Info::init(void)
 {
 	m_color.value = 0;
 	m_index = 0;
+	m_count = 0;
 }
 
 REGPARAM(0) void Color32Palette::init(void)
@@ -139,7 +140,7 @@ REGPARAM(2) bool Color32Palette::writeStatistics(const char *filename, bool byCo
 		size_t sz = size();
 		for (size_t i = 0; i < sz; i++)
 		{
-			fprintf(cf, "%zu : %08lX : %lu\n", i, info->m_color.value, info->m_index);
+			fprintf(cf, "%zu : %08lX : %lu\n", i, info->m_color.value, info->m_count);
 			info++;
 		}
 		fprintf(cf, "# Total colors used: %zu\n", sz);
