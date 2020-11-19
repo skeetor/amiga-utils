@@ -12,16 +12,16 @@ _start:
 	beq		.Done
 
 	lea		HWREGBASE,a5
-	move.w	#$0080,DMACON_OFS(a5)
-	move.l	d0,COP1LCH_OFS(a5)
-	move.w	d0,COPJMP1_OFS(a5)
-	move.w	#$8280,DMACON_OFS(a5)
+	move.w	#$0080,DMACON(a5)
+	move.l	d0,COP1LCH(a5)
+	move.w	d0,COPJMP1(a5)
+	move.w	#$8280,DMACON(a5)
 
 .WaitMouse:
 	btst	#6,CIAAPRA
 	bne		.WaitMouse
 
-	move.w	#$0080,DMACON_OFS(a5)
+	move.w	#$0080,DMACON(a5)
 	jsr		ClearCopperlist
 
 .Done:

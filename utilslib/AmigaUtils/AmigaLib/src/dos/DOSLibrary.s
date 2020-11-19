@@ -23,6 +23,18 @@ DOSInit:
 DOSShutdown:
 	rts
 
+SetStdout::
+_SetStdout::
+
+	move.l d0,stdout
+	rts
+
+GetStdout::
+_GetStdout::
+
+	move.l stdout,d0
+	rts
+
 	CreateSystemLibrary DOS
 
 ; *******************************************************************************

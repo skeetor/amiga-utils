@@ -14,7 +14,7 @@ _start:
 	move.l	sp,a4
 	pea		ZLIB_VERSION
 	lea		HeaderTxt,a0
-	jsr		printFormatted
+	jsr		PrintFormatted
 	move.l	a4,sp
 
 	; Calculate CRC of the uncompressed input buffer ...
@@ -24,7 +24,7 @@ _start:
 	move.l	sp,a4
 	movem.l	d0,-(sp)
 	lea		UncompressedTxt,a0
-	jsr		printFormatted
+	jsr		PrintFormatted
 	move.l	a4,sp
 
 	; ... and compress it.
@@ -48,7 +48,7 @@ _start:
 	move.l	cLen,-(sp)
 	move.l	uLen,-(sp)
 	lea		CompressBufferTxt,a0
-	jsr		printFormatted
+	jsr		PrintFormatted
 	move.l	a4,sp
 
 	; Decompress the compressed buffer.
@@ -71,7 +71,7 @@ _start:
 	move.l	cLen,-(sp)
 	move.l	cuLen,-(sp)
 	lea		UncompressBufferTxt,a0
-	jsr		printFormatted
+	jsr		PrintFormatted
 	move.l	a4,sp
 
 	move.l	uCRC32,d0
@@ -90,7 +90,7 @@ _start:
 
 .FailedCompress:
 	lea		UncompressedTxt,a0
-	jsr		printFormatted
+	jsr		PrintFormatted
 	bra.s	.Done
 
 .SelftestFailed:
@@ -102,7 +102,7 @@ _start:
 	move.l	uLen,-(sp)
 
 	lea		SelftestFailedTxt,a0
-	jsr		printFormatted
+	jsr		PrintFormatted
 	move.l	a5,a7
 	bra.s	.Done
 

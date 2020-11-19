@@ -9,27 +9,33 @@ typedef enum
 {
 	BIF_NONE = 0,
 
-	BIF_COMPRESSED		= (1 << 0),			// Bitmap data is zlib compressed
+	BIF_ZLIB			= (1 << 0),			// Bitmap data is zlib compressed
 	BIF_INTERLEAVE		= (1 << 1),
 
 	BIF_MAX
 } BitmapImageFlags;
 
 #pragma pack(push,1)
+// The bitplane is always rounded to 16 bits, so if the image width is i.e. 
+// only 2 pixels, there are 14 pixels empty as still 16 bits stored per bitmap line.
 typedef struct _BitmapHeader
 {
 	char id[5];
 	uint8_t flags;
 	uint16_t width;
 	uint16_t height;
-	uint8_t colors;							// Number of color entries. May be 0 if colors are not stored with the image data
+	uint16_t frames;			// Number of frames, which all have the same heigth and width. If there is only one
+								// image then this is 1. This allows to store multiple images in the same file, i.e. for
+								// animations or fonts.
 	uint8_t planes;
+	uint8_t colors;				// Number of color entries. May be 0 if colors are not stored with the image data
 
 	void init(void)
 	{
 		memcpy(id, AMIGA_BPL_ID, 5);
 		width = 0;
 		height = 0;
+		frames = 1;
 		flags = BIF_NONE;
 		colors = 0;
 		planes = 0;

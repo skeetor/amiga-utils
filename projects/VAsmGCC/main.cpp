@@ -9,7 +9,7 @@
 extern "C" uint32_t ASMStrlen(const char *str);
 extern "C" uint32_t GCCStrlen(const char *str);
 
-int main(int argc, char *argv[])
+STDARGS int main(int argc, char *argv[])
 {
 	clock_t elapsed = clock();
 

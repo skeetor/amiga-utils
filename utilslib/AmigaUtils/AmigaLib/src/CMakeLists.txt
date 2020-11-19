@@ -29,6 +29,8 @@ set(ASM_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/mem/zcopyb.s
 	${CMAKE_CURRENT_SOURCE_DIR}/mem/zcopyw.s
 	${CMAKE_CURRENT_SOURCE_DIR}/mem/zcopyl.s
+	${CMAKE_CURRENT_SOURCE_DIR}/mem/memfill.s
+	${CMAKE_CURRENT_SOURCE_DIR}/mem/memfillBlit.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/copper/CreateCopperList.s
 	${CMAKE_CURRENT_SOURCE_DIR}/copper/CreateCopperListC.s
@@ -38,12 +40,18 @@ set(ASM_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/math/rnd_xorshift.s
 
 	${CMAKE_CURRENT_SOURCE_DIR}/sound/ptplayer/ptplayer.asm
+
+	${CMAKE_CURRENT_SOURCE_DIR}/debug/DebugWait.s
+	${CMAKE_CURRENT_SOURCE_DIR}/debug/PrintCPU.s
 )
 
 set(SOURCES
 	${SOURCES}
 
 	${CMAKE_CURRENT_SOURCE_DIR}/algorithms/bsearch.cpp
+
+	${CMAKE_CURRENT_SOURCE_DIR}/dos/options.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/dos/FindParam.cpp
 )
 
 set(ASM_SOURCES ${ASM_SOURCES} PARENT_SCOPE)

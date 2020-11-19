@@ -21,6 +21,6 @@ C_FUNCTION uint32_t rndGetSeed(void);
 /**
  * Return a random 32 bit value
  */
-C_FUNCTION uint32_t rnd(void);
+C_FUNCTION uint32_t random(void);
 
 #endif // _UTILSLIB_MATH_H

@@ -9,7 +9,7 @@
 #include "utils/string/string.h"
 #include <utils/devices/mouse.h>
 
-int main(int argc, char *argv[])
+STDARGS int main(int argc, char *argv[])
 {
 	char timestr[128];
 	char buffer[128];
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	memset(buffer, 0, sizeof(buffer));
 
 	value = 0x1239f;
-	len = formatString(buffer, sizeof(buffer), "%s: %lu = %08lX\n\r", "Convert", value, value);
+	len = FormatString(buffer, sizeof(buffer), "%s: %lu = %08lX\n\r", "Convert", value, value);
 	uint32_t slen = snprintf(timestr, sizeof(timestr), "%s: %lu = %08lX\n\r", "Convert", value, value);
 
 	if (len != slen)
@@ -33,13 +33,13 @@ int main(int argc, char *argv[])
 	elapsed = clock();
 	for(uint16_t i = 0; i <= 10000; i++)
 	{
-		len = formatString(buffer, sizeof(buffer), "%s: %lu = %08lX\n\r", "Convert", value, value);
+		len = FormatString(buffer, sizeof(buffer), "%s: %lu = %08lX\n\r", "Convert", value, value);
 		if(CheckLeftMouseRelease())
 			break;
 	}
 
 	elapsed = clock() - elapsed;
-	formatString(buffer, sizeof(buffer), "Elapsed: %s\n", utils::clockToTimeString(elapsed, timestr, sizeof(timestr)));
+	FormatString(buffer, sizeof(buffer), "Elapsed: %s\n", utils::clockToTimeString(elapsed, timestr, sizeof(timestr)));
 	puts(buffer);
 
 	printf("Time clib sprintf comparison\nPress left mouse to skip...\n");
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 			break;
 	}
 	elapsed = clock() - elapsed;
-	formatString(buffer, sizeof(buffer), "Elapsed: %s\n", utils::clockToTimeString(elapsed, timestr, sizeof(timestr)));
+	FormatString(buffer, sizeof(buffer), "Elapsed: %s\n", utils::clockToTimeString(elapsed, timestr, sizeof(timestr)));
 	puts(buffer);
 
 	return 0;

@@ -60,6 +60,6 @@
  ************************************************************
  */
 C_FUNCTION uint32_t vFormatString(char *buffer REGISTER_PARAM(a0), uint32_t bufferLen REGISTER_PARAM(d0), const char *format REGISTER_PARAM(a1), va_list args REGISTER_PARAM(d1));
-C_FUNCTION uint32_t formatString(char *buffer REGISTER_PARAM(a0), uint32_t bufferLen REGISTER_PARAM(d0), const char *format REGISTER_PARAM(a1), ...);
+C_FUNCTION uint32_t FormatString(char *buffer REGISTER_PARAM(a0), uint32_t bufferLen REGISTER_PARAM(d0), const char *format REGISTER_PARAM(a1), ...);
 
 #endif // _UTILSLIB_STRING_H

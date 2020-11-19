@@ -72,7 +72,7 @@ VerticalBlankIRQ:
 
 DebugInit:
 	lea		WaitMouseButtonTxt,a0
-	jsr		printString
+	jsr		PrintString
 
 .WaitStart:
 	
@@ -80,12 +80,12 @@ DebugInit:
 	beq		.WaitStart
 
 	lea		NewlineTxt,a0
-	jsr		printString
+	jsr		PrintString
 
 	lea		MouseButtonExitTxt,a0
-	jsr		printString
+	jsr		PrintString
 	lea		NewlineTxt,a0
-	jsr		printString
+	jsr		PrintString
 
 	rts
 

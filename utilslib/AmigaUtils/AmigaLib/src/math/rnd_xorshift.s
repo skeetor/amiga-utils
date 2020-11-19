@@ -48,8 +48,8 @@ _rndGetSeed::
 ;
 ; #####################################################
 
-rnd::
-_rnd::
+random::
+_random::
     lea     rndSeed(pc),a0
     move.l  (a0),d0
 	move.l  4(a0),d1

@@ -79,6 +79,9 @@ amiga <N>                N specifies the number of bitplanes to be written (1-8)
                          is ommited it is determined by the current number of colors. In this
                          case the image is by default reduced to 5 bitplanes if the number of
                          colors is higher than 32.
+amiga-bpl <N>            Same as 'amiga' only the width is extended to the next multiple of 16
+                         if it is not already a multiple of 16. This way the image can be
+                         directly shown on screen.
 )";
 
 	puts(s);
