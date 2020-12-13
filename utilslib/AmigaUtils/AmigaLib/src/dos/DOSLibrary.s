@@ -9,8 +9,8 @@
 _EnableDiskIO::
 EnableDiskIO::
 	; http://eab.abime.net/showthread.php?p=1367099#post1367099
-	move.w	#INT_SET|INT_PORTS,INTENA
-	move.w	#DMA_SET|DMA_BLTEN|DMA_DSKEN,DMACON
+	move.w	#INT_SET|INT_PORTS,HWR_INTENA
+	move.w	#DMA_SET|DMA_DMAEN|DMA_BLTEN|DMA_DSKEN,HWR_DMACON
 	rts
 
 DOSInit:

@@ -49,22 +49,23 @@ SystemSave::
 	move.w	ADKCONR_OFS(a6),ADK				; Store old ADKCON
 	move.w	INTENAR_OFS(a6),OldINTENA		; Store old INTENA
 	move.w	DMACONR_OFS(a6),DMAVal			; Store old DMA
-	move.w	#$7FFF,d0
 
 	bsr	WaitRaster
+	bsr	WaitRaster
 
-	move.w	d0,INTENA_OFS(a6)				; Disable Interrupts
-	move.w	d0,DMACON_OFS(a6)				; Clear all DMA channels
-	move.w	d0,INTREQ_OFS(a6)				; Clear all INT requests
+	move.w	#$7FFF,d0
+	move.w	d0,INTENA(a6)				; Disable Interrupts
+	move.w	d0,DMACON(a6)				; Clear all DMA channels
+	move.w	d0,INTREQ(a6)				; Clear all INT requests
 
 	move.l	$6c(a0),OldVBI
 	lea		NewVBI,a1
 	move.l	a1,$6c(a0)
 
-	move.w	#INTENASET!$C000,INTENA_OFS(a6)	; set Interrupts+ BIT 14/15
-	move.w	#DMASET!$8200,DMACON_OFS(a6)	; set DMA	+ BIT 09/15
-	move.w  #%0000111100000000,POTGO_OFS(a6); Set standard OS value
-	move.w	#0,BPLCON0_OFS(a6)
+	move.w	#INTENASET!$C000,INTENA(a6)	; set Interrupts+ BIT 14/15
+	move.w	#$8000,DMACON(a6)			; Disable DMA
+	move.w  #%0000111100000000,POTGO(a6); Set standard OS value
+	move.w	#0,BPLCON0(a6)
 
 .END:
 
