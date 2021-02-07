@@ -59,6 +59,18 @@ If this function is used in SystemSave() state, the disk IO must be enabled for 
 **Include:** "utils/dos/stdio.h"<br>
 **Description:** Similar to printf. See `FormatString` below.
 
+**Name:** ``:FindOption<br>
+**Include:** "utils/dos/options.h"<br>
+**Description:** Find the option class and it's index in the array<br>
+
+**Name:** ``:ValidateOption<br>
+**Include:** "utils/dos/options.h"<br>
+**Description:** Validtes if the set of defined options matches the commandline<br>
+
+**Name:** ``:FindParam<br>
+**Include:** "utils/dos/options.h"<br>
+**Description:** Find the specified param and arguments from the commandline paraeters<br>
+
 #### Graphics
 
 #### exports<br>
