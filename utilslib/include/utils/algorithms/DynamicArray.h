@@ -214,6 +214,7 @@ public:
 		return m_array;
 	}
 
+	// this is not needed as we have the cast operator above, which serves to the same effect.
 	/*REGPARAM(1) T& operator [] (size_t index)
 	{
 		return m_array[index];
@@ -273,7 +274,53 @@ public:
 
 		return true;
 	}
-		
+
+	REGPARAM(2) bool reserve(size_t newsize, const T &value)
+	{
+		if (newsize > m_reserved)
+		{
+			size_t diff = newsize - m_reserved;
+			if (!reserve(newsize))
+				return false;
+
+			fillReserved(value, m_reserved - diff, m_reserved);
+		}
+
+		return true;
+	}
+
+	/**
+	 * Fills the array with a given value. Reserved elements will not be filled, only
+	 * items which are actually within the current size.
+	 */
+	REGPARAM(3) void fill(const T &value, size_t start = 0, size_t end = -1)
+	{
+		if (!m_array)
+			return;
+
+		if (end == -1 || end > m_elements)
+			end = m_elements;
+
+		for (size_t i = start; i < end; i++)
+			m_array[i] = value;
+	}
+
+	/**
+	 * Fills the array with a given value. This will also fill items which are reserved
+	 * but not yet in size.
+	 */
+	REGPARAM(3) void fillReserved(const T &value, size_t start = 0, size_t end = -1)
+	{
+		if (!m_array)
+			return;
+
+		if (end == -1 || end > m_reserved)
+			end = m_reserved;
+
+		for (size_t i = start; i < end; i++)
+			m_array[i] = value;
+	}
+
 	/**
 	 * If this is 0, resize will
 	 * realloc when

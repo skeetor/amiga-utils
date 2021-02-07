@@ -9,7 +9,7 @@
 #include "utils/string/numbers.h"
 #include <utils/devices/mouse.h>
 
-int main(int argc, char *argv[])
+STDARGS int main(int argc, char *argv[])
 {
 	char buffer[128];
 	uint32_t value;

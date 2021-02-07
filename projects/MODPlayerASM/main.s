@@ -51,10 +51,10 @@ _start:
 	lea		outbuffer,a0
 	lea		FileString,a1
 	move.l	a7,d1
-	jsr		formatString
+	jsr		FormatString
 	move.l	a5,a7
 	lea		outbuffer,a0
-	jsr		printString
+	jsr		PrintString
 
 	jsr		CloseDOSLibrary
 

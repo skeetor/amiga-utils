@@ -13,13 +13,13 @@ static void ShowInfo(void)
 {
 	char buffer[200];
 
-	formatString(buffer, sizeof(buffer), "Press left mousebutton to start...");
-	printString(buffer);
+	FormatString(buffer, sizeof(buffer), "Press left mousebutton to start...");
+	PrintString(buffer);
 
 	while(!CheckLeftMouseRelease());
 
-	formatString(buffer, sizeof(buffer), "\n\rPress left mousebutton to exit...\n\r");
-	printString(buffer);
+	FormatString(buffer, sizeof(buffer), "\n\rPress left mousebutton to exit...\n\r");
+	PrintString(buffer);
 }
 
 static bool playMOD(const char *modName)
@@ -50,7 +50,7 @@ static bool playMOD(const char *modName)
 	return false;
 }
 
-int main(int argc, char *argv[])
+STDARGS int main(int argc, char *argv[])
 {
 	OpenDOSLibrary();
 	ShowInfo();
@@ -67,8 +67,8 @@ int main(int argc, char *argv[])
 	{
 		char buffer[200];
 
-		formatString(buffer, sizeof(buffer), "Unable to load %s\n\r", modName);
-		printString(buffer);
+		FormatString(buffer, sizeof(buffer), "Unable to load %s\n\r", modName);
+		PrintString(buffer);
 	}
 
 	CloseDOSLibrary();

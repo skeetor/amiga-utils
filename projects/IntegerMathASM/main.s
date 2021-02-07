@@ -40,11 +40,11 @@ PrintDivision:
 	lea		OutString,a1
 	move.l	#OutbufferSize,d0
 	move.l	a7,d1
-	jsr		formatString
+	jsr		FormatString
 	move.l	a2,a7
 
 	lea		outbuffer,a0
-	jsr		printString
+	jsr		PrintString
 	
 	rts
 

@@ -28,11 +28,11 @@ CheckLeftMouseRelease::
 _CheckRightMouseRelease::
 CheckRightMouseRelease::
 
-	btst	#2,POTGOR				; Right button
+	btst	#2,HWR_POTGOR				; Right button
 	bne		.None
 
 .WaitRelease:
-	btst	#2,POTGOR				; Right button
+	btst	#2,HWR_POTGOR				; Right button
 	beq		.WaitRelease
 
 	moveq	#1,d0

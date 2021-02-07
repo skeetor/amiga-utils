@@ -116,6 +116,10 @@ make -j 4 binutils gcc vasm vbcc vlink libnix libgcc clib2 ndk ndk13
 
 Demonstrates the usage of printing formatted strings.
 
+### TestMemfill/TestMemfillBlitter
+
+Using and testing the memfill/memfillBlit funtions as well as showing performance stats.
+Also demonstrates how to do commandline parsing.
 
 ### ImageConvert
 

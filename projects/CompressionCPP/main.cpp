@@ -20,7 +20,7 @@ const uint32_t uCompData[DATA_ELEMENTS] =
 	0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
 };
 
-int main(int argc, char *argv[])
+STDARGS int main(int argc, char *argv[])
 {
 	OpenDOSLibrary();
 
@@ -30,29 +30,29 @@ int main(int argc, char *argv[])
 	memset(zCompData, 0, sizeof(zCompData));
 	memset(zuCompData, 0, sizeof(zuCompData));
 
-	printFormatted("Testing zLib %s compression library\r\n\r\n", zlibVersion());
+	PrintFormatted("Testing zLib %s compression library\r\n\r\n", zlibVersion());
 
 	// ...and calculate the CRC for the uncompressed buffer.
 	uLong uCRC32 = 0;
 	uCRC32 = crc32(uCRC32, (const Bytef *)uCompData, sizeof(uCompData));
-	printFormatted("Uncompressed CRC32: $%08lX\r\n", uCRC32);
+	PrintFormatted("Uncompressed CRC32: $%08lX\r\n", uCRC32);
 
 	uint32_t cLen = zlibCompressData(uCompData, sizeof(uCompData), zCompData, sizeof(zCompData));
 	uLong cCRC32 = 0;
 	if(cLen != (uint32_t)-1)
 		cCRC32 = crc32(cCRC32, (const Bytef *)zCompData, cLen);
 
-	printFormatted("Compressed buffer from %lu to %lu bytes. CRC32: $%08lX\r\n", sizeof(uCompData), cLen, cCRC32);
+	PrintFormatted("Compressed buffer from %lu to %lu bytes. CRC32: $%08lX\r\n", sizeof(uCompData), cLen, cCRC32);
 
 	uint32_t zuLen = zlibUncompressData(zCompData, cLen, zuCompData, sizeof(zuCompData));
 	uLong zuCRC32 = 0;
 	if(zuLen != (uint32_t)-1)
 		zuCRC32 = crc32(zuCRC32, (const Bytef *)zuCompData, sizeof(zuCompData));
 
-	printFormatted("Uncompressed buffer from %lu to %lu bytes. CRC32: $%08lX\r\n", cLen, zuLen, zuCRC32);
+	PrintFormatted("Uncompressed buffer from %lu to %lu bytes. CRC32: $%08lX\r\n", cLen, zuLen, zuCRC32);
 
 	if((zuLen != sizeof(uCompData)) || (uCRC32 != zuCRC32))
-		printFormatted("[ERROR] Selftest failed %ld/$%08lX vs. %ld/$%08lX\r\n", zuLen, uCRC32, sizeof(uCompData), zuCRC32);
+		PrintFormatted("[ERROR] Selftest failed %ld/$%08lX vs. %ld/$%08lX\r\n", zuLen, uCRC32, sizeof(uCompData), zuCRC32);
 
 	CloseDOSLibrary();
 

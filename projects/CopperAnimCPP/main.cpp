@@ -237,7 +237,7 @@ void stopAnimation(void)
 	gVBIProc = nullptr;
 }
 
-int main(int argc, char *argv[])
+STDARGS int main(int argc, char *argv[])
 {
 	uint32_t sz = sizeof(uint32_t)*MAX_COPPER_LINES;
 	gCopperListPtr = (uint32_t *)AllocMem(sz, MEMF_CHIP);

@@ -17,17 +17,17 @@ _vWriteFormatted::
 ; INPUT:
 ;	A0: Formatstring
 ;
-; RETURN: See formatString
+; RETURN: See FormatString
 ;
 ; Modified: D0, D1, A0-A1
 ;
 ; #####################################################
 
-_printFormatted::
-printFormatted::
+PrintFormatted::
+_PrintFormatted::
 	move.l	stdout,d0
 
-_writeFormatted::
+_WriteFormatted::
 	lea		4(sp),a1
 	move.l	a1,d1
 
@@ -36,7 +36,7 @@ wfmIntern:
 
 ; #####################################################
 ; Write string to stdout/file. For details refer to 
-; formatString.
+; FormatString.
 ;
 ; INPUT:
 ;	D0: Outputfilehandle
@@ -49,7 +49,7 @@ wfmIntern:
 ; Modified: D0, D1, A0-A1
 ;
 ; #####################################################
-writeFormatted::
+WriteFormatted::
 	movem.l	d2-d3/a5-a6,-(sp)
 	movem.l	d0,-(sp)		; save Filehandle
 	move.l	a1,d0
@@ -71,7 +71,7 @@ writeFormatted::
 	move.l	a0,a1
 	move.l	d2,a0
 	move.l	d2,a6
-	jsr		formatString
+	jsr		FormatString
 
 	move.l	d0,d2
 	movem.l	(sp)+,d0

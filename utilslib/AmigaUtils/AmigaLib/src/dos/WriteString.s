@@ -17,12 +17,12 @@
 ;
 ; #####################################################
 
-_printString::
-printString::
+_PrintString::
+PrintString::
 	move.l	stdout,d0
 
-_writeString::
-writeString::
+_WriteString::
+WriteString::
 	movem.l	d2-d3/a6,-(sp)
 	move.l	d0,d1			; FileHandle
 	move.l	a0,d2			; Buffer

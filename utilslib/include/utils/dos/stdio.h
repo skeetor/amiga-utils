@@ -8,8 +8,8 @@
 /**
  * Print a string to stdout/filehandle
  */
-C_FUNCTION void printString(const char *string REGISTER_PARAM(a0));
-C_FUNCTION void writeString(uint32_t fileHandle REGISTER_PARAM(d0), const char *string REGISTER_PARAM(a0));
+C_FUNCTION void PrintString(const char *string REGISTER_PARAM(a0));
+C_FUNCTION void WriteString(uint32_t fileHandle REGISTER_PARAM(d0), const char *string REGISTER_PARAM(a0));
 
 /**
  * Print/Write a string in printf style to stdout/filehandle.
@@ -30,15 +30,21 @@ C_FUNCTION void writeString(uint32_t fileHandle REGISTER_PARAM(d0), const char *
  *
  */
 C_FUNCTION void vPrintFormatted(const char *format REGISTER_PARAM(a0), va_list args REGISTER_PARAM(d1));
-C_FUNCTION void printFormatted(const char *format REGISTER_PARAM(a0), ...);
+C_FUNCTION void PrintFormatted(const char *format REGISTER_PARAM(a0), ...);
 
 C_FUNCTION void vWriteFormatted(uint32_t fileHandle REGISTER_PARAM(d0), const char *format REGISTER_PARAM(a0), va_list args REGISTER_PARAM(d1));
-C_FUNCTION void writeFormatted(uint32_t fileHandle REGISTER_PARAM(d0), const char *format REGISTER_PARAM(a0), ...);
+C_FUNCTION void WriteFormatted(uint32_t fileHandle REGISTER_PARAM(d0), const char *format REGISTER_PARAM(a0), ...);
 
 C_FUNCTION void vPrintFormattedN(uint32_t defaultMaxLen REGISTER_PARAM(a1), const char *format REGISTER_PARAM(a0), va_list args REGISTER_PARAM(d1));
-C_FUNCTION void printFormattedN(uint32_t defaultMaxLen REGISTER_PARAM(a1), const char *format REGISTER_PARAM(a0), ...);
+C_FUNCTION void PrintFormattedN(uint32_t defaultMaxLen REGISTER_PARAM(a1), const char *format REGISTER_PARAM(a0), ...);
 
 C_FUNCTION void vWriteFormattedN(uint32_t defaultMaxLen REGISTER_PARAM(a1), uint32_t fileHandle REGISTER_PARAM(d0), const char *format REGISTER_PARAM(a0), va_list args REGISTER_PARAM(d1));
-C_FUNCTION void writeFormattedN(uint32_t defaultMaxLen REGISTER_PARAM(a1), uint32_t fileHandle REGISTER_PARAM(d0), const char *format REGISTER_PARAM(a0), ...);
+C_FUNCTION void WriteFormattedN(uint32_t defaultMaxLen REGISTER_PARAM(a1), uint32_t fileHandle REGISTER_PARAM(d0), const char *format REGISTER_PARAM(a0), ...);
+
+/**
+ * Set/Get the current stdout filehandle.
+ */
+C_FUNCTION void SetStdout(uint32_t fileHandle REGISTER_PARAM(d0));
+C_FUNCTION uint32_t GetStdout(void);
 
 #endif // _UTILSLIB_STDIO_I

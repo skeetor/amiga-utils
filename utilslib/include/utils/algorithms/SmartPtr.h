@@ -7,10 +7,10 @@ template <typename T, typename D = T>
 class SmartPtr
 {
 public:
-	typedef void (*deleter)(D *);
+	typedef void (*deleter)(D);
 
 public:
-	REGPARAM(2) SmartPtr(T *ptr, deleter f)
+	REGPARAM(2) SmartPtr(T ptr, deleter f)
 	: m_ptr(ptr)
 	, m_deleter((deleter)f)
 	{
@@ -32,13 +32,13 @@ public:
 		m_ptr = nullptr;
 	}
 
-	REGPARAM(0) operator T *(void) const
+	REGPARAM(0) operator T(void) const
 	{
 		return m_ptr;
 	}
 
 private:
-	T *m_ptr;
+	T m_ptr;
 	deleter m_deleter;
 };
 

@@ -102,14 +102,14 @@ STR_LOWERCASE		equ		24
 
 NUMERIC_BUFFER_SIZE equ     34
 
-_formatString::
+_FormatString::
 	move.l	a0,-(sp)
 	lea		8(a7),a0
 	move.l	a0,d1
 	move.l	(sp)+,a0
 
 _vFormatString::
-formatString::
+FormatString::
 
     movem.l a5,-(sp)
 

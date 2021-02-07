@@ -30,10 +30,10 @@ _start:
 
 	lea		HWREGBASE,a5
 	move.l	CopperListPtr,d0
-	move.w	#$0080,DMACON_OFS(a5)
-	move.l	d0,COP1LCH_OFS(a5)
-	move.w	d0,COPJMP2_OFS(a5)
-	move.w	#$8280,DMACON_OFS(a5)
+	move.w	#$0080,DMACON(a5)
+	move.l	d0,COP1LCH(a5)
+	move.w	d0,COPJMP2(a5)
+	move.w	#$8280,DMACON(a5)
 
 	lea		CopperAnimation,a0
 	move.l	a0,VBIProc
@@ -47,7 +47,7 @@ _start:
 	jmp		.MainLoop
 
 .Stop:
-	move.w	#$0080,DMACON_OFS(a5)
+	move.w	#$0080,DMACON(a5)
 	jsr		ClearCopperlist
 
 .Done:
@@ -152,7 +152,7 @@ CopperAnimation:
 
 InitDebug:
 	lea		WaitMouseButtonTxt,a0
-	jsr		printString
+	jsr		PrintString
 
 .WaitStart:
 	
@@ -160,12 +160,12 @@ InitDebug:
 	beq		.WaitStart
 
 	lea		NewlineTxt,a0
-	jsr		printString
+	jsr		PrintString
 
 	lea		MouseButtonExitTxt,a0
-	jsr		printString
+	jsr		PrintString
 	lea		NewlineTxt,a0
-	jsr		printString
+	jsr		PrintString
 
 	rts
 

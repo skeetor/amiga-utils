@@ -8,7 +8,7 @@ WaitRaster::
 	movem.l	d0,-(a7)
 
 .loop:
-	move.l	VPOSR,d0
+	move.l	HWR_VPOSR,d0
 	and.l	#$1ff00,d0
 
 	tst.w	PAL_SYSTEM

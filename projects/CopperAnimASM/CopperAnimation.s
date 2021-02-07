@@ -22,10 +22,10 @@ StartIntro::
 
 	lea		HWREGBASE,a5
 	move.l	CopperListPtr,d0
-	move.w	#$0080,DMACON_OFS(a5)
-	move.l	d0,COP1LCH_OFS(a5)
-	move.w	d0,COPJMP2_OFS(a5)		; Trigger copper start, value doesn't matter
-	move.w	#$8280,DMACON_OFS(a5)
+	move.w	#$0080,DMACON(a5)
+	move.l	d0,COP1LCH(a5)
+	move.w	d0,COPJMP2(a5)		; Trigger copper start, value doesn't matter
+	move.w	#$8280,DMACON(a5)
 
 	lea		CopperAnim,a2
 	move.l	a2,VBIProc
@@ -35,7 +35,7 @@ StartIntro::
 
 StopIntro::
 	lea		HWREGBASE,a5
-	move.w	#$0080,DMACON_OFS(a5)
+	move.w	#$0080,DMACON(a5)
 	jsr		FreeCopperMem
 
 	rts

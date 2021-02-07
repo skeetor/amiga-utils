@@ -157,4 +157,30 @@ STACKPTR SET \<STACKPTR>+4
 
 	ENDM
 
+; ******************************************************
+; Create constants for bitflags with a bitnumber and its
+; corresponding mask.
+;
+; Arguments:
+;	PREFIX		Prefix for the resulting constant
+;	NAME		The name of the flag
+;	BITNUMBER 	Number of the bit
+;
+; Result:
+;	The name for the bitnumber and it's bitmask.
+;
+; Example:
+;	BitFlag	BLT,COMPRESSION,2
+;	Constants created:
+;   BLT_BT_COMPRESSION	EQU 2		; Bitnumber
+;   BLT_FL_COMPRESSION	EQU (1<<2)	; Bitmask
+;
+; ******************************************************
+BitFlag MACRO
+
+\1_BT_\2	EQU \3
+\1_FL_\2	EQU (1<<\3)
+
+	ENDM
+	
 	ENDIF
