@@ -4,15 +4,14 @@
 
 const Option *FindOption(const char *name, const Option *options, uint32_t *index)
 {
-	uint32_t nameLen = strlen(name);
-
 	uint32_t i = 0;
 	while (options->m_name)
 	{
-		if (strncmp(options->m_name, name, nameLen) == 0 && strlen(options->m_name) == nameLen)
+		if (strcmp(options->m_name, name) == 0)
 		{
 			if (index)
 				*index = i;
+
 			return options;
 		}
 

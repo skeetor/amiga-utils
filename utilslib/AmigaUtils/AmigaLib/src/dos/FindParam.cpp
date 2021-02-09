@@ -3,7 +3,6 @@
 int FindParam(int argc, char **argv, const char *name, int paramIndex, int start)
 {
 	char par = false;
-	uint32_t nameLen = strlen(name);
 	int index = 0;
 
 	for (int i = start; i < argc; i++)
@@ -12,7 +11,7 @@ int FindParam(int argc, char **argv, const char *name, int paramIndex, int start
 
 		if (!par)
 		{
-			if (strncmp(p, name, nameLen) == 0 && strlen(p) == nameLen)
+			if (strcmp(p, name) == 0)
 			{
 				par = true;
 
