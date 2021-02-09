@@ -3,14 +3,14 @@
 This library contains utillity functions for development on Amiga operating system. My primary goal is to support Kickstart 1.2+. This library is intended for development on a raw Amiga without much support of the OS, so most of the functions can be used without any OS being available. Also the core utillity library is free of dependencies to standard C library functions.
 All features of the library have simple but fully working demonstration projects for use in ASM or in C/CPP.
 
-## CMake examples with for Amiga 
+## CMake examples for Amiga 
 
 These are examples for creating Amiga Projects using AmigaOS compiler from bebbo: https://github.com/bebbo/amiga-gcc
 
 `make binutils gcc gprof fd2sfd fd2pragma ira sfdc vasm vbcc vlink libnix libgcc clib2 ndk ndk13`
 
 
-The examples should run on any kickstartfrom 1.x up.
+The examples should run on any kickstart, from 1.x up.
 
 For using this package, you need either a Linux installation or under Windows using MSYS2 MSYS (not MingW).
 
